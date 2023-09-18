@@ -1,0 +1,118 @@
+
+<app-modal>
+  <ng-container header>{{ "Pention Scheme" | translate}}</ng-container>
+
+  <ng-container body>
+    <form [formGroup]="pentionschemeForm" (ngSubmit)="onFormSubmit()" id="ngForm">
+      <div mat-dialog-content>
+
+        <div class="row">
+          <div class="col-md-6">
+            <label class="form-label">{{ "name" | translate}} <span class="text-danger">*</span></label>
+            <input class="form-control form-control-sm" type="text" placeholder="Ex. Security" formControlName="name" [ngClass]="{'is-invalid': fc['name'].invalid && isSubmitted}">
+            <small class="invalid-feedback fst-italic" *ngIf="fc['name'].errors?.['required']">This field is required</small>
+            <div class="invalid-feedback" *ngIf="fc['name'].errors?.['minlength']">Name must be at least 3 characters long</div>
+            <div class="invalid-feedback" *ngIf="fc['name'].errors?.['serverError']">
+              {{ fc['name'].errors?.['serverError'] }}
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">{{ "remark" | translate}} <span class="text-danger">*</span></label>
+            <input class="form-control form-control-sm" type="text" placeholder="Ex. Security" formControlName="remark" [ngClass]="{'is-invalid': fc['remark'].invalid && isSubmitted}">
+            <small class="invalid-feedback fst-italic" *ngIf="fc['remark'].errors?.['required']">This field is required</small>
+            <div class="invalid-feedback" *ngIf="fc['remark'].errors?.['minlength']">Remark must be at least 3 characters long</div>
+            <div class="invalid-feedback" *ngIf="fc['remark'].errors?.['serverError']">
+              {{ fc['remark'].errors?.['serverError'] }}
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="row">
+
+          <div class="col-md-12">
+            <label class="form-label">{{ " school" | translate}} <span class="text-danger">*</span></label>
+            <ng-select
+              [items]="schoolList"
+              bindLabel="name"
+              bindValue="id"
+              [multiple]="true"
+              placeholder="Choose school"
+              formControlName="schools"
+              [ngClass]="{'is-invalid': fc['schools'].invalid && isSubmitted}"
+              [(ngModel)]="schoolListSelect">
+            </ng-select>
+            <div class="invalid-feedback fst-italic" *ngIf="fc['schools'].errors?.['required']">This field is required</div>
+          </div>
+
+        </div>
+
+
+
+        <div class="row">
+
+          <div class="col-md-12">
+            <label class="form-label">{{ " campus" | translate}} <span class="text-danger">*</span></label>
+            <ng-select
+              [items]="campusList"
+              bindLabel="name"
+              bindValue="id"
+              [multiple]="true"
+              placeholder="Choose campus"
+              formControlName="campuses"
+              [ngClass]="{'is-invalid': fc['campuses'].invalid && isSubmitted}"
+              [(ngModel)]="campusListSelect">
+            </ng-select>
+            <div class="invalid-feedback fst-italic" *ngIf="fc['campuses'].errors?.['required']">This field is required</div>
+          </div>
+
+        </div>
+
+
+
+        <div class="row">
+
+          <div class="col-md-12">
+            <label class="form-label">{{ " country" | translate}} <span class="text-danger">*</span></label>
+            <ng-select
+              [items]="countryList"
+              bindLabel="name"
+              bindValue="id"
+              [multiple]="true"
+              placeholder="Choose country"
+              formControlName="countries"
+              [ngClass]="{'is-invalid': fc['countries'].invalid && isSubmitted}"
+              [(ngModel)]="countryListSelect">
+            </ng-select>
+            <div class="invalid-feedback fst-italic" *ngIf="fc['countries'].errors?.['required']">This field is required</div>
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </form>
+
+
+  </ng-container>
+
+  <button footer form="ngForm" (submit)="onFormSubmit()" type="submit" class="btn btn-sm btn-primary" [disabled]=saving>
+    <ng-container *ngIf="!saving; else isSaving">{{data ? edit : create}}</ng-container>
+    <ng-template #isSaving>
+      {{ "Submitting" | translate}} ...
+    </ng-template>
+  </button>
+
+
+</app-modal>
+
+
+
+
+
+
+
+

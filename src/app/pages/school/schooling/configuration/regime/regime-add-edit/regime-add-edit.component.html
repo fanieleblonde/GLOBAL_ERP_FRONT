@@ -1,0 +1,88 @@
+
+<app-modal>
+    <ng-container header>{{ "regime" | translate}}</ng-container>
+  
+    <ng-container body>
+      <form [formGroup]="regimeForm" (ngSubmit)="onFormSubmit()" id="ngForm">
+        <div mat-dialog-content>
+  
+          <div class="row">
+  
+            <div class="col-md-6">
+                <label class="form-label">{{ "Regime" | translate}}</label>
+                <input class="form-control form-control-sm" type="text" placeholder="Ex. A" formControlName="regime">
+               
+                </div>
+  
+            <div class="col-md-6">
+              <label class="form-label">{{ "Remarks" | translate}}</label>
+              <input class="form-control form-control-sm" type="text" placeholder="Ex. A" formControlName="remarks">
+             
+              </div>
+            </div>
+  
+          </div>
+  
+          <div class="row">
+            <div class="col-md-6">
+              <label class="form-label">{{ "Campus" | translate}}</label>
+              <ng-select
+                [items]="campusList"
+                bindLabel="name"
+                bindValue="id"
+                placeholder="Choose Campus"
+                formControlName="campus"
+                [(ngModel)]="campusListSelect">
+              </ng-select>
+            </div>
+
+
+            <div class="col-md-6">
+                <label class="form-label">{{ "Country" | translate}}</label>
+                <ng-select
+                  [items]="countryList"
+                  bindLabel="name"
+                  bindValue="id"
+                  placeholder="Choose Country"
+                  formControlName="country"
+                  [(ngModel)]="countryListSelect">
+                </ng-select>
+              </div>
+          </div>
+  
+          <div class="row">
+            <div class="col-md-6">
+                <label class="form-label">{{ "School" | translate}}</label>
+                <ng-select
+                  [items]="schoolList"
+                  bindLabel="name"
+                  bindValue="id"
+                  placeholder="Choose School"
+                  formControlName="school"
+                  [(ngModel)]="schoolListSelect">
+                </ng-select>
+              </div>
+          </div>
+  
+      </form>
+  
+    </ng-container>
+  
+    <button footer form="ngForm" (submit)="onFormSubmit()" type="submit" class="btn btn-sm btn-primary" [disabled]=saving>
+      <ng-container *ngIf="!saving; else isSaving">{{data ? edit : create}}</ng-container>
+      <ng-template #isSaving>
+        {{ "Submitting" | translate}} ...
+      </ng-template>
+    </button>
+  
+  
+  </app-modal>
+  
+  
+  
+  
+  
+  
+  
+  
+  

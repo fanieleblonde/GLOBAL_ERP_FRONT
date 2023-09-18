@@ -1,0 +1,153 @@
+
+<app-modal>
+  <ng-container header>{{ "National Exam" | translate}}</ng-container>
+
+  <ng-container body>
+    <form [formGroup]="nationalexamForm" (ngSubmit)="onFormSubmit()" id="ngForm">
+      <div mat-dialog-content>
+
+
+        <div class="row">
+          <div class="col-md-12">
+            <label class="form-label">{{ "year" | translate}} <span class="text-danger">*</span></label>
+            <ng-select
+              [items]="yearList"
+              bindLabel="year"
+              bindValue="id"
+              placeholder="Choose year"
+              formControlName="year"
+              [ngClass]="{'is-invalid': fc['year'].invalid && isSubmitted}"
+              [(ngModel)]="yearListSelect">
+            </ng-select>
+            <div class="invalid-feedback" *ngIf="fc['year'].errors?.['required']">This field is required</div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <label class="form-label">{{ "name" | translate}} <span class="text-danger">*</span></label>
+            <input class="form-control form-control-sm" type="text" placeholder="Ex. A" formControlName="name" [ngClass]="{'is-invalid': fc['name'].invalid && isSubmitted}">
+            <small class="invalid-feedback fst-italic" *ngIf="fc['name'].errors?.['required']">This field is required</small>
+            <div class="invalid-feedback" *ngIf="fc['name'].errors?.['minlength']">Name must be at least 3 characters long</div>
+            <div class="invalid-feedback" *ngIf="fc['name'].errors?.['serverError']">
+              {{ fc['name'].errors?.['serverError'] }}
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">{{ "code" | translate}} <span class="text-danger">*</span></label>
+            <input class="form-control form-control-sm" type="text" placeholder="Ex. A" formControlName="code" [ngClass]="{'is-invalid': fc['code'].invalid && isSubmitted}">
+            <small class="invalid-feedback fst-italic" *ngIf="fc['code'].errors?.['required']">This field is required</small>
+            <div class="invalid-feedback" *ngIf="fc['code'].errors?.['minlength']">Name must be at least 3 characters long</div>
+            <div class="invalid-feedback" *ngIf="fc['code'].errors?.['serverError']">
+              {{ fc['code'].errors?.['serverError'] }}
+            </div>
+          </div>
+          </div>
+
+
+        <div class="row">
+            <div class="col-md-6">
+              <label class="form-label">{{ "File Dateline" | translate}} </label>
+              <input class="form-control form-control-sm" type="text" placeholder="Ex. A" formControlName="filedateline" [ngClass]="{'is-invalid': fc['filedateline'].invalid && isSubmitted}">
+              <small class="invalid-feedback fst-italic" *ngIf="fc['filedateline'].errors?.['required']">This field is required</small>
+              <div class="invalid-feedback fst-italic" *ngIf="fc['filedateline'].errors?.['serverError']">
+                {{ fc['filedateline'].errors?.['serverError'] }}
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">{{ "Document Fee" | translate}} </label>
+              <input class="form-control form-control-sm" type="number" placeholder="Ex. A" formControlName="documentfee" [ngClass]="{'is-invalid': fc['documentfee'].invalid && isSubmitted}">
+              <small class="invalid-feedback fst-italic" *ngIf="fc['documentfee'].errors?.['required']">This field is required</small>
+              <div class="invalid-feedback fst-italic" *ngIf="fc['documentfee'].errors?.['serverError']">
+                {{ fc['documentfee'].errors?.['serverError'] }}
+              </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col-md-6">
+            <label class="form-label">{{ "period" | translate}} <span class="text-danger">*</span></label>
+            <ng-select
+              [items]="periodList"
+              bindLabel="name"
+              bindValue="id"
+              placeholder="Choose period"
+              formControlName="period"
+              [ngClass]="{'is-invalid': fc['period'].invalid && isSubmitted}"
+              [(ngModel)]="periodListSelect">
+            </ng-select>
+            <div class="invalid-feedback" *ngIf="fc['period'].errors?.['required']">This field is required</div>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">{{ "speciality" | translate}} <span class="text-danger">*</span></label>
+            <ng-select
+              [items]="specialityList"
+              bindLabel="name"
+              bindValue="id"
+              placeholder="Choose speciality"
+              formControlName="speciality"
+              [ngClass]="{'is-invalid': fc['speciality'].invalid && isSubmitted}"
+              [(ngModel)]="specialityListSelect">
+            </ng-select>
+            <div class="invalid-feedback" *ngIf="fc['speciality'].errors?.['required']">This field is required</div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <label class="form-label">{{ "diploma" | translate}} <span class="text-danger">*</span></label>
+            <ng-select
+              [items]="diplomaList"
+              bindLabel="name"
+              bindValue="id"
+              placeholder="Choose diploma"
+              formControlName="diploma"
+              [ngClass]="{'is-invalid': fc['diploma'].invalid && isSubmitted}"
+              [(ngModel)]="diplomaListSelect">
+            </ng-select>
+            <div class="invalid-feedback" *ngIf="fc['diploma'].errors?.['required']">This field is required</div>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">{{ "Number of Paper" | translate}} </label>
+            <input class="form-control form-control-sm" type="number" placeholder="Ex. A" formControlName="numberofpaper" [ngClass]="{'is-invalid': fc['numberofpaper'].invalid && isSubmitted}">
+            <small class="invalid-feedback fst-italic" *ngIf="fc['numberofpaper'].errors?.['required']">This field is required</small>
+            <div class="invalid-feedback fst-italic" *ngIf="fc['numberofpaper'].errors?.['serverError']">
+              {{ fc['numberofpaper'].errors?.['serverError'] }}
+            </div>
+          </div>
+      </div>
+        <div class="row">
+          <div class="col-md-6">
+            <label class="form-label">{{ "Admission Points" | translate}} </label>
+            <input class="form-control form-control-sm" type="number" placeholder="Ex. A" formControlName="admissionpoints" [ngClass]="{'is-invalid': fc['admissionpoints'].invalid && isSubmitted}">
+            <small class="invalid-feedback fst-italic" *ngIf="fc['admissionpoints'].errors?.['required']">This field is required</small>
+            <div class="invalid-feedback fst-italic" *ngIf="fc['admissionpoints'].errors?.['serverError']">
+              {{ fc['admissionpoints'].errors?.['serverError'] }}
+            </div>
+          </div>
+      </div>
+
+      </div>
+
+    </form>
+
+  </ng-container>
+
+  <button footer form="ngForm" (submit)="onFormSubmit()" type="submit" class="btn btn-sm btn-primary" [disabled]=saving>
+    <ng-container *ngIf="!saving; else isSaving">{{data ? edit : create}}</ng-container>
+    <ng-template #isSaving>
+      {{ "Submitting" | translate}} ...
+    </ng-template>
+  </button>
+
+
+</app-modal>
+
+
+
+
+
+
+
+

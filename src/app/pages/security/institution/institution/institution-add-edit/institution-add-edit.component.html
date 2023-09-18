@@ -1,0 +1,117 @@
+
+<app-modal>
+  <ng-container header>{{ "institution" | translate}}</ng-container>
+
+  <ng-container body>
+    <form [formGroup]="institutionForm" (ngSubmit)="onFormSubmit()" id="ngForm">
+      <div mat-dialog-content>
+
+        <div class="row">
+          <div class="col-md-6">
+            <label class="form-label">{{ "managerType" | translate}}</label>
+            <ng-select
+              [items]="managerTypeList"
+              bindLabel="name"
+              bindValue="id"
+              placeholder="Choose managerType"
+              formControlName="managerType"
+              [ngClass]="{'is-invalid': fc['managerType'].invalid && isSubmitted}"
+              [(ngModel)]="managerTypeListSelect">
+            </ng-select>
+            <small class="invalid-feedback fst-italic" *ngIf="fc['managerType'].errors?.['required']">This field is required</small>
+            <div class="invalid-feedback" *ngIf="fc['managerType'].errors?.['serverError']">
+              {{ fc['managerType'].errors?.['serverError'] }}
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">{{ "manager" | translate}}</label>
+            <input class="form-control form-control-sm" type="text" placeholder="Ex. Paul" formControlName="manager" >
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <label class="form-label">{{ "classCategory" | translate}}</label>
+            <ng-select
+              [items]="classCategoryList"
+              bindLabel="name"
+              bindValue="id"
+              placeholder="Choose class Category"
+              formControlName="classCategory"
+              [(ngModel)]="classCategoryListSelect">
+            </ng-select>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">{{ "cycle" | translate}} <span class="text-danger">*</span></label>
+            <ng-select
+              [items]="cycleList"
+              bindLabel="name"
+              bindValue="id"
+              placeholder="Choose cycle"
+              formControlName="cycle"
+              [ngClass]="{'is-invalid': fc['cycle'].invalid && isSubmitted}"
+              [(ngModel)]="cycleListSelect">
+            </ng-select>
+            <small class="invalid-feedback fst-italic" *ngIf="fc['cycle'].errors?.['required']">This field is required</small>
+            <div class="invalid-feedback" *ngIf="fc['cycle'].errors?.['serverError']">
+              {{ fc['cycle'].errors?.['serverError'] }}
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <label class="form-label">{{ "periodType" | translate}} <span class="text-danger">*</span></label>
+            <ng-select
+              [items]="periodTypeList"
+              bindLabel="name"
+              bindValue="id"
+              placeholder="Choose periodType"
+              formControlName="periodType"
+              [ngClass]="{'is-invalid': fc['periodType'].invalid && isSubmitted}"
+              [(ngModel)]="periodTypeListSelect">
+            </ng-select>
+            <small class="invalid-feedback fst-italic" *ngIf="fc['periodType'].errors?.['required']">This field is required</small>
+            <div class="invalid-feedback" *ngIf="fc['periodType'].errors?.['serverError']">
+              {{ fc['periodType'].errors?.['serverError'] }}
+            </div>
+          </div>
+            <div class="col-md-6">
+              <label class="form-label">{{ "divisionNumber" | translate}}</label>
+              <input class="form-control form-control-sm" type="number" placeholder="Ex. 2" formControlName="divisionNumber">
+            </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <label class="form-label">{{ "autorisationDate" | translate}}</label>
+            <input class="form-control form-control-sm" type="date" id="html5-date-input" formControlName="autorisationDate">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">{{ "autorisationRef" | translate}}</label>
+            <input class="form-control form-control-sm" type="text" placeholder="Ex. Paul" formControlName="autorisationRef" >
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <label class="form-label">{{ "openDate" | translate}}</label>
+            <input class="form-control form-control-sm" type="date" id="html5-date-input" formControlName="openDate">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">{{ "openningRef" | translate}}</label>
+            <input class="form-control form-control-sm" type="text" placeholder="Ex.2e AAA" formControlName="openningRef" >
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </ng-container>
+  <button footer form="ngForm" (submit)="onFormSubmit()" type="submit" class="btn btn-sm btn-primary" [disabled]=saving>
+    <ng-container *ngIf="!saving; else isSaving">{{data ? edit : create}}</ng-container>
+    <ng-template #isSaving>
+      {{ "Submitting" | translate}} ...
+    </ng-template>
+  </button>
+</app-modal>
+
+

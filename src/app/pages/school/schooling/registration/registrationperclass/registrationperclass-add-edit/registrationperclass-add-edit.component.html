@@ -1,0 +1,142 @@
+<app-modal>
+  <ng-container header>{{ "Registration-per-class" | translate}}</ng-container>
+
+  <ng-container body>
+
+    <pre>{{ registrationPerClassForm.value | json }}</pre>
+
+    <form [formGroup]="registrationPerClassForm" (ngSubmit)="onFormSubmit()" id="ngForm">
+      <div mat-dialog-content>
+
+        <div class="row">
+
+          <div class="col-md-6">
+            <label class="form-label">{{ "Old Year" | translate}} </label>
+            <ng-select
+              [items]="yearList"
+              bindLabel="year"
+              bindValue="id"
+              placeholder="Choose year"
+              formControlName="year"
+              [(ngModel)]="yearSelected"
+              (ngModelChange)="applyYearFilter($event)">
+            </ng-select>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">{{ "Old Classe" | translate}} </label>
+            <ng-select
+              [items]="classeListFiltered"
+              bindLabel="code"
+              bindValue="id"
+              placeholder="Choose classe"
+              formControlName="classe"
+              [(ngModel)]="classeSelected"
+              (ngModelChange)="applyClasseFilter($event)">
+            </ng-select>
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <label class="form-label">{{ "Student List" | translate}} </label>
+            <ng-select
+              [items]="studentlistListFiltered"
+              bindLabel="student.name"
+              bindValue="id"
+              [multiple]="true"
+              placeholder="Choose studentlist"
+              formControlName="studentlist"
+              [(ngModel)]="studentlistSelected">
+            </ng-select>
+          </div>
+        </div>
+
+        <div class="row">
+
+          <div class="col-md-6">
+            <label class="form-label">{{ "New Year" | translate}} </label>
+            <ng-select
+              [items]="currentyearList"
+              bindLabel="year"
+              bindValue="id"
+              placeholder="Choose currentyear"
+              formControlName="currentyear"
+              [(ngModel)]="currentyearSelected">
+            </ng-select>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">{{ "New Classe" | translate}} </label>
+            <ng-select
+              [items]="currentclasseList"
+              bindLabel="code"
+              bindValue="id"
+              placeholder="Choose currentclasse"
+              formControlName="currentclasse"
+              [(ngModel)]="currentclasseSelected">
+            </ng-select>
+          </div>
+
+        </div>
+
+        <div class="row">
+
+          <div class="col-md-6">
+            <label class="form-label">{{ "New Regime" | translate}} </label>
+            <ng-select
+              [items]="regimeList"
+              bindLabel="regime"
+              bindValue="id"
+              placeholder="Choose regime"
+              formControlName="regime"
+              [(ngModel)]="newregimeSelected">
+            </ng-select>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">{{ "New Option" | translate}} </label>
+            <ng-select
+              [items]="optionList"
+              bindLabel="name"
+              bindValue="id"
+              placeholder="Choose options"
+              formControlName="options"
+              [(ngModel)]="newoptionsSelected">
+            </ng-select>
+          </div>
+
+
+          </div>
+
+          <div class="row">
+
+            <div class="col-md-6" style="font-size: 12px;">
+              <mat-radio-group aria-label="Select an option" type="text" formControlName="transactions"  >
+                <mat-label><b>Transaction</b></mat-label>
+                <mat-radio-button value="Yes">Yes</mat-radio-button>
+                <mat-radio-button value="No">No</mat-radio-button>
+              </mat-radio-group>
+              </div>
+
+        </div>
+
+
+      </div>
+
+    </form>
+
+  </ng-container>
+
+  <button footer form="ngForm" (submit)="onFormSubmit()" type="submit" class="btn btn-sm btn-primary" [disabled]=saving>
+    <ng-container *ngIf="!saving; else isSaving">{{data ? edit : create}}</ng-container>
+    <ng-template #isSaving>
+      {{ "Submitting" | translate}} ...
+    </ng-template>
+  </button>
+
+
+</app-modal>
+
+

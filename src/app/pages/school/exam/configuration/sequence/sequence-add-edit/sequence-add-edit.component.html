@@ -1,0 +1,130 @@
+
+<app-modal>
+  <ng-container header>{{ "sequence" | translate}}</ng-container>
+
+  <ng-container body>
+    <form [formGroup]="sequenceForm" (ngSubmit)="onFormSubmit()" id="ngForm">
+      <div mat-dialog-content>
+
+        <div class="row">
+          <div class="col-md-6">
+            <label class="form-label">{{ "institution" | translate}} <span class="text-danger">*</span></label>
+            <ng-select
+              [items]="institutionList"
+              bindLabel="name"
+              bindValue="id"
+              placeholder="Choose institution"
+              formControlName="institution"
+              [ngClass]="{'is-invalid': fc['institution'].invalid && isSubmitted}"
+              [(ngModel)]="institutionListSelect">
+            </ng-select>
+            <div class="invalid-feedback" *ngIf="fc['institution'].errors?.['required']">This field is required</div>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">{{ "year" | translate}} <span class="text-danger">*</span></label>
+            <ng-select
+              [items]="yearList"
+              bindLabel="year"
+              bindValue="id"
+              placeholder="Choose year"
+              formControlName="year"
+              [ngClass]="{'is-invalid': fc['year'].invalid && isSubmitted}"
+              [(ngModel)]="yearListSelect">
+            </ng-select>
+            <div class="invalid-feedback" *ngIf="fc['year'].errors?.['required']">This field is required</div>
+          </div>
+        </div>
+
+          <div class="row">
+          <div class="col-md-4">
+            <label class="form-label">{{ "school_period" | translate}}</label>
+            <ng-select
+              [items]="schoolPeriodList"
+              bindLabel="name"
+              bindValue="id"
+              placeholder="Choose school period"
+              formControlName="schoolPeriod"
+              [(ngModel)]="schoolPeriodListSelect">
+            </ng-select>
+          </div>
+            <div class="col-md-4">
+              <label class="form-label">{{ "Position" | translate}}</label>
+              <input class="form-control form-control-sm" type="number" placeholder="Ex. A" formControlName="position">
+            </div>
+          <div class="col-md-4">
+            <label class="form-label">{{ "code" | translate}} <span class="text-danger">*</span></label>
+            <input class="form-control form-control-sm" type="text" placeholder="Ex. A" formControlName="code" [ngClass]="{'is-invalid': fc['code'].invalid && isSubmitted}">
+            <small class="invalid-feedback fst-italic" *ngIf="fc['code'].errors?.['required']">This field is required</small>
+            <div class="invalid-feedback" *ngIf="fc['code'].errors?.['minlength']">Name must be at least 3 characters long</div>
+            <div class="invalid-feedback" *ngIf="fc['code'].errors?.['serverError']">
+              {{ fc['name'].errors?.['serverError'] }}</div>
+          </div>
+          </div>
+        <div class="row">
+          <div class="col-md-12">
+            <mat-radio-group aria-label="Select an option" formControlName="isMarkActif">
+              <mat-label><b> {{ "is_mark_actif" | translate}}:</b></mat-label>
+              <mat-radio-button [value]="true">YES</mat-radio-button>
+              <mat-radio-button [value]="false">NO</mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <mat-radio-group aria-label="Select an option" formControlName="isCourseActif">
+              <mat-label><b> {{ "is_course_actif" | translate}}:</b></mat-label>
+              <mat-radio-button [value]="true">YES</mat-radio-button>
+              <mat-radio-button [value]="false">NO</mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </div>
+      <div class="row">
+        <div class="col-md-6">
+        <label class="form-label">{{ "weighting" | translate}}</label>
+        <input class="form-control form-control-sm" type="number" placeholder="Ex. 00" formControlName="weighting" >
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">{{ "max_number_of_assigment" | translate}}</label>
+        <input class="form-control form-control-sm" type="number" placeholder="Ex. AAA" formControlName="maxNumberOfAssigment" >
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <label class="form-label">{{ "school_session" | translate}}</label>
+            <ng-select
+              [items]="schoolSessionList"
+              bindLabel="name"
+              bindValue="id"
+              placeholder="Choose school session"
+              formControlName="schoolSession"
+              [(ngModel)]="schoolSessionListSelect">
+            </ng-select>
+        </div>
+      </div>
+      </div>
+    </form>
+
+  </ng-container>
+
+<!--  <button footer form="ngForm" (submit)="onFormSubmit()" type="submit" class="btn btn-sm btn-primary" [disabled]=saving>-->
+<!--    <ng-container *ngIf="!saving; else isSaving">{{data.id ? edit : create}}</ng-container>-->
+<!--    <ng-template #isSaving>-->
+<!--      {{ "Submitting" | translate}} ...-->
+<!--    </ng-template>-->
+<!--  </button>-->
+
+  <button footer form="ngForm" (submit)="onFormSubmit()" type="submit" class="btn btn-sm btn-primary" [disabled]=saving>
+    <ng-container *ngIf="!saving; else isSaving">{{data ? edit : create}}</ng-container>
+    <ng-template #isSaving>
+      {{ "Submitting" | translate}} ...
+    </ng-template>
+  </button>
+</app-modal>
+
+
+
+
+
+
+
+

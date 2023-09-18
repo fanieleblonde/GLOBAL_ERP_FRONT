@@ -1,0 +1,68 @@
+
+<app-modal>
+  <ng-container header>{{ "teacher_contact" | translate}}</ng-container>
+
+  <ng-container body>
+    <form [formGroup]="teacherForm" (ngSubmit)="onFormSubmit()" id="ngForm">
+      <div mat-dialog-content></div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <label class="form-label">{{ "phone" | translate}}<span class="text-danger">*</span></label>
+          <input class="form-control form-control-sm" type="text" id="html5-date-input" formControlName="phone" >
+          <div class="invalid-feedback" *ngIf="fc['phone'].errors?.['required']">This field is required</div>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">{{ "email" | translate}}</label>
+          <input class="form-control form-control-sm" type="text" placeholder="Ex. Technicien@info.com" formControlName="email" [ngClass]="{'is-invalid': fc['email'].invalid && isSubmitted}">
+          <div class="valid-feedback">Looks good!</div>
+          <div class="invalid-feedback" *ngIf="fc['email'].errors?.['email']">Email must be with mail convention</div>
+          <div class="invalid-feedback" *ngIf="fc['email'].errors?.['serverError']">
+            {{ fc['email'].errors?.['serverError'] }}
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <label class="form-label">{{ "occupation" | translate}}<span class="text-danger">*</span></label>
+          <input class="form-control form-control-sm" type="text" id="html5-date-input" formControlName="occupation" >
+          <div class="invalid-feedback" *ngIf="fc['occupation'].errors?.['required']">This field is required</div>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">{{ "address" | translate}}<span class="text-danger">*</span></label>
+          <input class="form-control form-control-sm" type="text" id="html5-date-input" formControlName="address" >
+          <div class="invalid-feedback" *ngIf="fc['address'].errors?.['required']">This field is required</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <label class="form-label">{{ "quarter" | translate}}<span class="text-danger">*</span></label>
+          <input class="form-control form-control-sm" type="text" id="html5-date-input" formControlName="quarter" >
+          <div class="invalid-feedback" *ngIf="fc['quarter'].errors?.['required']">This field is required</div>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">{{ "city" | translate}}<span class="text-danger">*</span></label>
+          <input class="form-control form-control-sm" type="text" id="html5-date-input" formControlName="city" >
+          <div class="invalid-feedback" *ngIf="fc['city'].errors?.['required']">This field is required</div>
+        </div>
+      </div>
+    </form>
+  </ng-container>
+  <button footer form="ngForm" (submit)="onFormSubmit()" type="submit" class="btn btn-sm btn-primary" [disabled]=saving>
+    <ng-container *ngIf="!saving; else isSaving">{{data ? edit : create}}</ng-container>
+    <ng-template #isSaving>
+      {{ "Submitting" | translate}} ...
+    </ng-template>
+  </button>
+
+
+</app-modal>
+
+
+
+
+
+
+
+

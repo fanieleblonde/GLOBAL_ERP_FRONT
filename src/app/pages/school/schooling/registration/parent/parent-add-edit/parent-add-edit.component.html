@@ -1,0 +1,118 @@
+
+<app-modal>
+    <ng-container header>{{ "parent" | translate}}</ng-container>
+  
+    <ng-container body>
+      <form [formGroup]="parentForm" (ngSubmit)="onFormSubmit()" id="ngForm">
+        <div mat-dialog-content>
+
+          <div class="wrapper">
+            <div class="overlay" *ngIf="isLoading">
+              <div class="spinner-wrapper">
+                <mat-card-content style="display: flex; padding: 80px 80px 80px; justify-content: center; align-items: center">
+                  <div class="spinner-border" style="width: 3rem; height: 3rem" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                  </div>
+                </mat-card-content>
+              </div>
+            </div>
+          </div>
+  
+            
+      
+      
+            <div class="row">
+                <div class="col-md-4">
+                  <label class="form-label">{{ "Father Name" | translate}} </label>
+                  <input class="form-control form-control-sm" type="text" placeholder="Ex. A" formControlName="fathername" >
+                </div>
+      
+                <div class="col-md-4">
+                  <label class="form-label">{{ "Father Phone" | translate}} </label>
+                  <input class="form-control form-control-sm" type="text" placeholder="Ex. A" formControlName="fatherphone" >
+                </div>
+      
+                <div class="col-md-4">
+                  <label class="form-label">{{ "Father Email" | translate}} </label>
+                  <input class="form-control form-control-sm" type="text" placeholder="Ex. A" formControlName="fatheremail">
+      
+                </div>
+            </div>
+      
+            <div class="row">
+                <div class="col-md-4">
+                  <label class="form-label">{{ "Father Profession" | translate}} </label>
+                  <input class="form-control form-control-sm" type="text" placeholder="Ex. A" formControlName="fatherprofession" >
+                </div>
+      
+                <div class="col-md-4">
+                  <label class="form-label">{{ "Mother Name" | translate}} </label>
+                  <input class="form-control form-control-sm" type="text" placeholder="Ex. A" formControlName="mothername" >
+                </div>
+      
+                <div class="col-md-4">
+                  <label class="form-label">{{ "Mother Phone" | translate}} </label>
+                  <input class="form-control form-control-sm" type="text" placeholder="Ex. A" formControlName="motherphone" >
+                </div>
+            </div>
+      
+      
+            <div class="row">
+              <div class="col-md-4">
+                <label class="form-label">{{ "Mother Email" | translate}} </label>
+                <input class="form-control form-control-sm" type="text" placeholder="Ex. A" formControlName="motheremail" >
+              </div>
+      
+              <div class="col-md-4">
+                <label class="form-label">{{ "Mother Profession" | translate}} </label>
+                <input class="form-control form-control-sm" type="text" placeholder="Ex. A" formControlName="motherprofession" >
+              </div>
+            <!-- comment -->
+              <div class="col-md-4">
+                <label class="form-label">{{ "Guardian Name" | translate}} </label>
+                <input class="form-control form-control-sm" type="text" placeholder="Ex. A" formControlName="guardianname" >
+              </div>
+            </div>
+      
+            <div class="row">
+              <div class="col-md-4">
+                <label class="form-label">{{ "Guardian Phone" | translate}} </label>
+                <input class="form-control form-control-sm" type="text" placeholder="Ex. A" formControlName="guardianphone" >
+              </div>
+      
+              <div class="col-md-4">
+                <label class="form-label">{{ "Guardian Email" | translate}} </label>
+                <input class="form-control form-control-sm" type="text" placeholder="Ex. A" formControlName="guardianemail">
+              </div>
+      
+              <div class="col-md-4">
+                <label class="form-label">{{ "Guardian Profession" | translate}} </label>
+                <input class="form-control form-control-sm" type="text" placeholder="Ex. A" formControlName="guardianprofession" >
+              </div>
+            </div>
+  
+  
+        </div>
+  
+      </form>
+  
+    </ng-container>
+  
+    <button footer form="ngForm" (submit)="onFormSubmit()" type="submit" class="btn btn-sm btn-primary" [disabled]=saving>
+      <ng-container *ngIf="!saving; else isSaving">{{data ? edit : create}}</ng-container>
+      <ng-template #isSaving>
+        {{ "Submitting" | translate}} ...
+      </ng-template>
+    </button>
+  
+  
+  </app-modal>
+  
+  
+  
+  
+  
+  
+  
+  
+  

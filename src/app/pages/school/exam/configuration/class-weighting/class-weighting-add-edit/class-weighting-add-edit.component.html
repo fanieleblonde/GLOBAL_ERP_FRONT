@@ -1,0 +1,131 @@
+
+<app-modal>
+  <ng-container header>{{ "class_weighting" | translate}}</ng-container>
+
+  <ng-container body>
+    <form [formGroup]="classweightingForm" (ngSubmit)="onFormSubmit()" id="ngForm">
+      <div mat-dialog-content>
+
+        <div class="row">
+          <div class="col-md-6">
+            <label class="form-label">{{ "school_class" | translate}} </label>
+            <ng-select
+              [items]="schoolclassList"
+              bindLabel="code"
+              bindValue="id"
+              placeholder="Choose schoolClass"
+              formControlName="schoolClass"
+              [(ngModel)]="schoolclassListSelect">
+            </ng-select>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">{{ "year" | translate}}</label>
+            <ng-select
+              [items]="yearList"
+              bindLabel="year"
+              bindValue="id"
+              placeholder="Choose year"
+              formControlName="year"
+              [(ngModel)]="yearListSelect">
+            </ng-select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <label class="form-label">{{ "school" | translate}} </label>
+            <ng-select
+              [items]="schoolList"
+              bindLabel="name"
+              bindValue="id"
+              placeholder="Choose school"
+              formControlName="school"
+              [(ngModel)]="schoolListSelect">
+            </ng-select>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">{{ "period_type" | translate}}</label>
+            <ng-select
+              [items]="periodTypeList"
+              bindLabel="name"
+              bindValue="id"
+              placeholder="Choose periodType"
+              formControlName="periodType"
+              [(ngModel)]="periodTypeListSelect">
+            </ng-select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4">
+            <label class="form-label">{{ "p1cc" | translate}}</label>
+            <input class="form-control form-control-sm" type="number" placeholder="Ex. AAA" formControlName="p1cc" >
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">{{ "p1ex" | translate}}</label>
+            <input class="form-control form-control-sm" type="number" placeholder="Ex. 00" formControlName="p1ex" >
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">{{ "p1rt" | translate}}</label>
+            <input class="form-control form-control-sm" type="number" placeholder="Ex. AAA" formControlName="p1rt" >
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4">
+            <label class="form-label">{{ "p2cc" | translate}}</label>
+            <input class="form-control form-control-sm" type="number" placeholder="Ex. 00" formControlName="p2cc" >
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">{{ "p2ex" | translate}}</label>
+            <input class="form-control form-control-sm" type="number" placeholder="Ex. 00" formControlName="p2ex" >
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">{{ "p2rt" | translate}}</label>
+            <input class="form-control form-control-sm" type="number" placeholder="Ex. 00" formControlName="p2rt" >
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4">
+            <label class="form-label">{{ "p3cc" | translate}}</label>
+            <input class="form-control form-control-sm" type="number" placeholder="Ex. 00" formControlName="p3cc" >
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">{{ "p3ex" | translate}}</label>
+            <input class="form-control form-control-sm" type="number" placeholder="Ex. 00" formControlName="p3ex" >
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">{{ "p3rt" | translate}}</label>
+            <input class="form-control form-control-sm" type="number" placeholder="Ex. 00" formControlName="p3rt" >
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4">
+            <label class="form-label">{{ "general_eliminate_average" | translate}}</label>
+            <input class="form-control form-control-sm" type="number" placeholder="Ex. AAA" formControlName="generalEliminateAverage" >
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">{{ "eliminate_mark" | translate}}</label>
+            <input class="form-control form-control-sm" type="number" placeholder="Ex. 00" formControlName="eliminateMark" >
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">{{ "validation_mark" | translate}}</label>
+            <input class="form-control form-control-sm" type="number" placeholder="Ex. 00" formControlName="validationMark" >
+          </div>
+        </div>
+      </div>
+    </form>
+
+  </ng-container>
+  <button footer form="ngForm" (submit)="onFormSubmit()" type="submit" class="btn btn-sm btn-primary" [disabled]=saving>
+    <ng-container *ngIf="!saving; else isSaving">{{data ? edit : create}}</ng-container>
+    <ng-template #isSaving>
+      {{ "Submitting" | translate}} ...
+    </ng-template>
+  </button>
+
+
+</app-modal>
+

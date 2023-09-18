@@ -1,0 +1,368 @@
+
+<app-modal>
+  <ng-container header>{{ "class_program" | translate}}</ng-container>
+
+  <ng-container body>
+    <form [formGroup]="classProgramForm" (ngSubmit)="onFormSubmit()" id="ngForm">
+      <div mat-dialog-content>
+        <pre>{{
+          value | json
+          }}</pre>
+        <div class="row">
+          <div class="col-md-6">
+            <label class="form-label">{{ "institution" | translate}} <span class="text-danger">*</span></label>
+            <ng-select
+              [items]="institutionList"
+              bindLabel="name"
+              bindValue="id"
+              placeholder="Choose institution"
+              formControlName="institution"
+              [ngClass]="{'is-invalid': fc['institution'].invalid && isSubmitted}"
+              [(ngModel)]="institutionListSelect">
+            </ng-select>
+            <div class="invalid-feedback" *ngIf="fc['institution'].errors?.['required']">This field is required</div>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">{{ "year" | translate}} <span class="text-danger">*</span></label>
+            <ng-select
+              [items]="yearList"
+              bindLabel="year"
+              bindValue="id"
+              placeholder="Choose year"
+              formControlName="year"
+              [ngClass]="{'is-invalid': fc['year'].invalid && isSubmitted}"
+              [(ngModel)]="yearListSelect">
+            </ng-select>
+            <div class="invalid-feedback" *ngIf="fc['year'].errors?.['required']">This field is required</div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <label class="form-label">{{ "school" | translate}}</label>
+            <ng-select
+              [items]="schoolList"
+              bindLabel="name"
+              bindValue="id"
+              placeholder="Choose school "
+              formControlName="school"
+              [(ngModel)]="schoolListSelect">
+            </ng-select>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">{{ "class" | translate}}</label>
+            <ng-select
+              [items]="classList"
+              bindLabel="code"
+              bindValue="id"
+              placeholder="Choose class "
+              formControlName="class"
+              [(ngModel)]="classListSelect">
+            </ng-select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <label class="form-label">{{ "subject" | translate}}</label>
+            <ng-select
+              [items]="subjectList"
+              bindLabel="name"
+              bindValue="id"
+              placeholder="Choose subject "
+              formControlName="subject"
+              [(ngModel)]="subjectListSelect">
+            </ng-select>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">{{ "module" | translate}}</label>
+            <ng-select
+              [items]="moduleList"
+              bindLabel="name"
+              bindValue="id"
+              placeholder="Choose module "
+              formControlName="module"
+              [(ngModel)]="moduleListSelect">
+            </ng-select>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col-md-6">
+            <label class="form-label">{{ "teacher" | translate}}</label>
+            <ng-select
+              [items]="teacherList"
+              bindLabel="name"
+              bindValue="id"
+              placeholder="Choose teacher "
+              formControlName="teacher"
+              [(ngModel)]="teacherListSelect">
+            </ng-select>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">{{ "teacher2" | translate}}</label>
+            <ng-select
+              [items]="teacher2List"
+              bindLabel="name"
+              bindValue="id"
+              placeholder="Choose teacher2 "
+              formControlName="teacher2"
+              [(ngModel)]="teacher2ListSelect">
+            </ng-select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <label class="form-label">{{ "teacher3" | translate}}</label>
+            <ng-select
+              [items]="teacher3List"
+              bindLabel="name"
+              bindValue="id"
+              placeholder="Choose teacher "
+              formControlName="teacher3"
+              [(ngModel)]="teacher3ListSelect">
+            </ng-select>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">{{ "teacherCm" | translate}}</label>
+            <ng-select
+              [items]="teacherCmList"
+              bindLabel="name"
+              bindValue="id"
+              placeholder="Choose teacher "
+              formControlName="teacherCm"
+              [(ngModel)]="teacherCmListSelect">
+            </ng-select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <label class="form-label">{{ "teacherTd" | translate}}</label>
+            <ng-select
+              [items]="teacherTdList"
+              bindLabel="name"
+              bindValue="id"
+              placeholder="Choose teacher "
+              formControlName="teacherTd"
+              [(ngModel)]="teacherTdListSelect">
+            </ng-select>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">{{ "teacherTp" | translate}}</label>
+            <ng-select
+              [items]="teacherTpList"
+              bindLabel="name"
+              bindValue="id"
+              placeholder="Choose teacher "
+              formControlName="teacherTp"
+              [(ngModel)]="teacherTpListSelect">
+            </ng-select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <label class="form-label">{{ "teacherMark" | translate}}</label>
+            <ng-select
+              [items]="teacherMarkList"
+              bindLabel="name"
+              bindValue="id"
+              placeholder="Choose teacher "
+              formControlName="teacherMark"
+              [(ngModel)]="teacherMarkListSelect">
+            </ng-select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <mat-radio-group aria-label="Select an option" formControlName="isActif">
+              <mat-label><b> {{ "isActif" | translate}}:</b></mat-label>
+              <mat-radio-button [value]="true">YES</mat-radio-button>
+              <mat-radio-button [value]="false">NO</mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <label class="form-label">{{ "codeUVC" | translate}}</label>
+            <input class="form-control form-control-sm" type="text" placeholder="Ex. AA" formControlName="codeUVC">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">{{ "nameUVC" | translate}}</label>
+            <input class="form-control form-control-sm" type="text" placeholder="Ex. AA" formControlName="nameUVC">
+          </div>
+        </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <label class="form-label">{{ "periodType" | translate}}</label>
+          <ng-select
+            [items]="periodTypeList"
+            bindLabel="name"
+            bindValue="id"
+            placeholder="Choose school periodType"
+            formControlName="periodType"
+            [(ngModel)]="periodTypeListSelect">
+          </ng-select>
+        </div>
+          <div class="col-md-3">
+            <label class="form-label">{{ "Position" | translate}}</label>
+            <input class="form-control form-control-sm" type="number" placeholder="Ex. A" formControlName="position">
+          </div>
+
+        <div class="col-md-3">
+          <label class="form-label">{{ "coeff" | translate}}</label>
+          <input class="form-control form-control-sm" type="number" placeholder="Ex. A" formControlName="coeff">
+        </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <label class="form-label">{{ "principalRoom" | translate}}</label>
+            <ng-select
+              [items]="principalRoomList"
+              bindLabel="name"
+              bindValue="id"
+              placeholder="Choose  principal Room"
+              formControlName="principalRoom"
+              [(ngModel)]="principalRoomListSelect">
+            </ng-select>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">{{ "room2" | translate}}</label>
+            <ng-select
+              [items]="room2List"
+              bindLabel="name"
+              bindValue="id"
+              placeholder="Choose  Room"
+              formControlName="room2"
+              [(ngModel)]="room2ListSelect">
+            </ng-select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <label class="form-label">{{ "room3" | translate}}</label>
+            <ng-select
+              [items]="room3List"
+              bindLabel="name"
+              bindValue="id"
+              placeholder="Choose  Room"
+              formControlName="room3"
+              [(ngModel)]="room3ListSelect">
+            </ng-select>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">{{ "Room4" | translate}}</label>
+            <ng-select
+              [items]="room4List"
+              bindLabel="name"
+              bindValue="id"
+              placeholder="Choose  Room"
+              formControlName="Room4"
+              [(ngModel)]="room4ListSelect">
+            </ng-select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <label class="form-label">{{ "room5" | translate}}</label>
+            <ng-select
+              [items]="room5List"
+              bindLabel="name"
+              bindValue="id"
+              placeholder="Choose  Room"
+              formControlName="room5"
+              [(ngModel)]="room5ListSelect">
+            </ng-select>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">{{ "room6" | translate}}</label>
+            <ng-select
+              [items]="room6List"
+              bindLabel="name"
+              bindValue="id"
+              placeholder="Choose  Room"
+              formControlName="room6"
+              [(ngModel)]="room6ListSelect">
+            </ng-select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <label class="form-label">{{ "room7" | translate}}</label>
+            <ng-select
+              [items]="room7List"
+              bindLabel="name"
+              bindValue="id"
+              placeholder="Choose  Room"
+              formControlName="room7"
+              [(ngModel)]="room7ListSelect">
+            </ng-select>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">{{ "room8" | translate}}</label>
+            <ng-select
+              [items]="room8List"
+              bindLabel="name"
+              bindValue="id"
+              placeholder="Choose  Room"
+              formControlName="room8"
+              [(ngModel)]="room8ListSelect">
+            </ng-select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+      <div class="col-md-6">
+        <label class="form-label">{{ "room9" | translate}}</label>
+        <ng-select
+          [items]="room9List"
+          bindLabel="name"
+          bindValue="id"
+          placeholder="Choose  Room"
+          formControlName="room9"
+          [(ngModel)]="room9ListSelect">
+        </ng-select>
+      </div>
+        <div class="col-md-6">
+          <label class="form-label">{{ "nature" | translate}}</label>
+          <ng-select
+            [items]="natureList"
+            bindLabel="name"
+            bindValue="id"
+            placeholder="Choose  nature"
+            formControlName="nature"
+            [(ngModel)]="natureListSelect">
+          </ng-select>
+        </div>
+      </div>
+    </form>
+
+  </ng-container>
+
+  <!--  <button footer form="ngForm" (submit)="onFormSubmit()" type="submit" class="btn btn-sm btn-primary" [disabled]=saving>-->
+  <!--    <ng-container *ngIf="!saving; else isSaving">{{data.id ? edit : create}}</ng-container>-->
+  <!--    <ng-template #isSaving>-->
+  <!--      {{ "Submitting" | translate}} ...-->
+  <!--    </ng-template>-->
+  <!--  </button>-->
+
+  <button footer form="ngForm" (submit)="onFormSubmit()" type="submit" class="btn btn-sm btn-primary" [disabled]=saving>
+    <ng-container *ngIf="!saving; else isSaving">{{data ? edit : create}}</ng-container>
+    <ng-template #isSaving>
+      {{ "Submitting" | translate}} ...
+    </ng-template>
+  </button>
+</app-modal>
+
+
+
+
+
+
+
+

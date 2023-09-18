@@ -1,0 +1,93 @@
+//Reduce the size of pagination
+.mat-mdc-text-field-wrapper {
+    font-size: 10px;
+  }
+  
+  td-height{
+    height: 15px;
+  }
+  
+  //.example-container {
+  //  //height: 317px;
+  //  height: 280px;
+  //  width: 100%;
+  //  max-width: 100%;
+  //  overflow: auto;
+  //}
+  
+  .bg-secondary{
+    background-color: lightsteelblue !important;
+  }
+  
+  
+  .example-container {
+    height: auto;
+    max-height: 280px;
+    width: 100%;
+    max-width: 100%;
+    overflow: auto;
+  }
+  
+  .example-tooltip-red {
+    background-color: #b71c1c;
+  }
+  
+  .example-button {
+    margin-top: 16px;
+    background-color: #0a6aa1;
+    color: yellow;
+  }
+  .example-tooltip-uppercase {
+    text-transform: uppercase;
+    background-color: #31b131;
+    color: yellowgreen;
+  }
+  
+  mat-form-field-label {
+    transform: translateY(-10px);
+  }
+  .mat-input-element {
+    height: -21px !important;
+    font-size: 10px !important;
+  }
+  ::ng-deep .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label
+  { transform: translateY(-1.1em) scale(.75); width: 133.33333%; }
+  
+  
+  td.mat-column-actions {
+    display: block;
+    padding-top: 3px;
+    //padding-right: 1px;
+  }
+  
+  th.mat-column-position, td.mat-column-position {
+    padding-left: 8px;
+  }
+  
+  .mat-mdc-table-sticky-border-elem-right {
+    border-left: 1px solid #e0e0e0;
+  }
+  
+  .mat-mdc-table-sticky-border-elem-left {
+    border-right: 1px solid #e0e0e0;
+  }
+  
+  .mat-row {
+    height: 5px; /* ajustez cette valeur selon vos besoins */
+    font-size: 12px;
+  }
+  
+  .mat-cell {
+    font-size: 11px; /* ajustez cette valeur selon vos besoins */
+  }
+  
+  .mat-icon {
+    font-size: 16px; /* ajustez cette valeur selon vos besoins */
+  }
+  
+  .mat-checkbox-inner-container {
+    transform: scale(0.55);
+  }
+  
+  
+  

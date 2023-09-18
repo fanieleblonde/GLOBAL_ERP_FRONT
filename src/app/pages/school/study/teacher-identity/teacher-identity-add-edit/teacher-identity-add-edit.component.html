@@ -1,0 +1,60 @@
+
+<app-modal>
+  <ng-container header>{{ "teacher_identity" | translate}}</ng-container>
+
+  <ng-container body>
+    <form [formGroup]="teacherForm" (ngSubmit)="onFormSubmit()" id="ngForm">
+      <div mat-dialog-content>
+      <div class="row">
+        <div class="col-md-12">
+          <label class="form-label">{{ "identity_type" | translate}} </label>
+          <ng-select
+            [items]="identityTypeList"
+            bindLabel="name"
+            bindValue="id"
+            placeholder="Choose identityType"
+            formControlName="identityType"
+            [(ngModel)]="identityTypeListSelect">
+          </ng-select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <label class="form-label">{{ "idNumber" | translate}}</label>
+          <input class="form-control form-control-sm" type="text" id="html5-date-input" placeholder="Ex. 1" formControlName="idNumber" >
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">{{ "placeOfIssue" | translate}}</label>
+          <input class="form-control form-control-sm" type="text" id="html5-date-input" formControlName="placeOfIssue" >
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <label class="form-label">{{ "issueAt" | translate}}</label>
+          <input class="form-control form-control-sm" type="date" id="html5-date-input" formControlName="issueAt" >
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">{{ "expirationAt" | translate}}</label>
+          <input class="form-control form-control-sm" type="date" id="html5-date-input" formControlName="expirationAt" >
+        </div>
+      </div>
+      </div>
+    </form>
+
+  </ng-container>
+  <button footer form="ngForm" (submit)="onFormSubmit()" type="submit" class="btn btn-sm btn-primary" [disabled]=saving>
+    <ng-container *ngIf="!saving; else isSaving">{{data ? edit : create}}</ng-container>
+    <ng-template #isSaving>
+      {{ "Submitting" | translate}} ...
+    </ng-template>
+  </button>
+</app-modal>
+
+
+
+
+
+
+
+

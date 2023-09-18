@@ -1,0 +1,146 @@
+
+<app-modal>
+    <ng-container header>{{ "student" | translate}}</ng-container>
+  
+    <ng-container body>
+      <form [formGroup]="studentForm" (ngSubmit)="onFormSubmit()" id="ngForm">
+        <div mat-dialog-content>
+
+          <div class="wrapper">
+            <div class="overlay" *ngIf="isLoading">
+              <div class="spinner-wrapper">
+                <mat-card-content style="display: flex; padding: 80px 80px 80px; justify-content: center; align-items: center">
+                  <div class="spinner-border" style="width: 3rem; height: 3rem" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                  </div>
+                </mat-card-content>
+              </div>
+            </div>
+          </div>
+  
+            <div class="row">
+                <div class="col-md-4">
+                  <label class="form-label">{{ "year" | translate}}</label>
+                  <ng-select
+                    [items]="yearList"
+                    bindLabel="year"
+                    bindValue="id"
+                    placeholder="Choose year"
+                    formControlName="year"
+                    required
+                    [(ngModel)]="yearSelected">
+                  </ng-select>
+                </div>
+      
+                <div class="col-md-4">
+                  <label class="form-label">{{ "Matricule" | translate}} </label>
+                  <input class="form-control form-control-sm" type="text" placeholder="Ex. A" formControlName="matricule">
+                </div>
+      
+                <div class="col-md-4">
+                  <label class="form-label">{{ "Other Matricule" | translate}} </label>
+                  <input class="form-control form-control-sm" type="text" placeholder="Ex. A" formControlName="othermatricule">
+                </div>
+              </div>
+      
+              <div class="row">
+                <div class="col-md-4">
+                  <label class="form-label">{{ "Name" | translate}}</label>
+                  <input class="form-control form-control-sm" type="text" placeholder="Ex. A" formControlName="name">
+                </div>
+      
+                <div class="col-md-4">
+                  <label class="form-label">Date of Birth</label>
+                  <input class="form-control form-control-sm" type="date" id="html5-date-input" formControlName="dob">
+                </div>
+      
+            
+                
+      
+                <div class="col-md-4">
+                  <label class="form-label">{{ "Place of Birth" | translate}} </label>
+                  <input class="form-control form-control-sm" type="text" placeholder="Ex. A" formControlName="pob">
+                </div>
+      
+              </div>
+      
+              <div class="row">
+                <div class="col-md-4">
+                  <label class="form-label">{{ "Sex" | translate}} </label>
+                  <ng-select
+                    [items]="sexList"
+                    bindLabel="name"
+                    bindValue="id"
+                    placeholder="Choose sex"
+                    formControlName="sex"
+                    [(ngModel)]="sexSelected">
+                  </ng-select>
+                </div>
+      
+                <div class="col-md-4">
+                  <label class="form-label">{{ "Country" | translate}} </label>
+                  <ng-select
+                    [items]="countryList"
+                    bindLabel="name"
+                    bindValue="id"
+                    placeholder="Choose country"
+                    formControlName="country"
+                    [(ngModel)]="countrySelected">
+                  </ng-select>
+                </div>
+      
+                <div class="col-md-4">
+                  <label class="form-label">{{ "Region" | translate}} </label>
+                  <input class="form-control form-control-sm" type="text" placeholder="Ex. A" formControlName="region">
+                </div>
+              </div>
+      
+            <div class="row">
+              <div class="col-md-4">
+                <label class="form-label">{{ "Religion" | translate}} </label>
+                <ng-select
+                  [items]="religionList"
+                  bindLabel="name"
+                  bindValue="id"
+                  placeholder="Choose religion"
+                  formControlName="religion"
+                  [(ngModel)]="religionSelected">
+                </ng-select>
+              </div>
+      
+              <div class="col-md-4">
+                <label class="form-label">{{ "Student Phone" | translate}} </label>
+                <input class="form-control form-control-sm" type="text" placeholder="Ex. A" formControlName="studentphone">
+              </div>
+      
+              <div class="col-md-4">
+                <label class="form-label">{{ "Student Email" | translate}} </label>
+                <input class="form-control form-control-sm" type="text" placeholder="Ex. A" formControlName="studentemail" >
+              </div>
+            </div>
+  
+  
+        </div>
+  
+      </form>
+  
+    </ng-container>
+  
+    <button footer form="ngForm" (submit)="onFormSubmit()" type="submit" class="btn btn-sm btn-primary" [disabled]=saving>
+      <ng-container *ngIf="!saving; else isSaving">{{data ? edit : create}}</ng-container>
+      <ng-template #isSaving>
+        {{ "Submitting" | translate}} ...
+      </ng-template>
+    </button>
+  
+  
+  </app-modal>
+  
+  
+  
+  
+  
+  
+  
+  
+  

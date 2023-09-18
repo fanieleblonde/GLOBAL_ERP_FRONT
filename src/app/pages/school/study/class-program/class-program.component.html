@@ -1,0 +1,253 @@
+
+<!-- BEGIN: Content-->
+<br><br><br>
+<div class="content-header row">
+  <div class="content-header-left col-md-8 col-12 mb-2">
+    <div class="row breadcrumbs-top">
+      <div class="col-12">
+        <h3 class="content-header-title float-start mb-0">{{ "class_program" | translate}}</h3>
+        <div class="breadcrumb-wrapper">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html" i18n>{{ "school" | translate}}</a>
+            </li>
+            <li class="breadcrumb-item"><a href="#" i18n>{{ "setting" | translate}}</a>
+            </li>
+            <li class="breadcrumb-item active" i18n>{{ "class_program" | translate}}
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="text-md-end col-md-4 col-12 d-md-block d-none">
+    <!-- content-header-right -->
+    <!--    <div class="btn-group dropdown-sort" *ngIf="this.isButtonVisible">-->
+    <!--      <button type="button" class="btn-sm  btn-outline-primary dropdown-toggle me-1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+    <!--        <span class="active-sorting">Featured</span>-->
+    <!--      </button>-->
+    <!--      <div class="dropdown-menu">-->
+    <!--        <a class="dropdown-item" (click)="">Delete</a>-->
+    <!--      </div>-->
+    <!--    </div>-->
+
+    <button type="button" class="btn btn-primary waves-effect waves-float waves-light" (click)="openAddForm()">
+      <i class="fas fa-plus me-25"></i>{{ "new" | translate }}
+    </button>
+  </div>
+</div>
+
+
+<div class="card">
+  <h6 class="card-header" style="margin-top: -10px;">{{ "list_of_class_program" | translate }}</h6>
+  <div class="row" style="margin-top: -15px;">
+    <div class="col-md-4 mb-2 ms-2">
+      <div class="input-group input-group-merge">
+        <span class="input-group-text" id="basic-addon-search31"><i class="ti ti-search"></i></span>
+        <input
+          type="text"
+          class="form-control form-control-sm"
+          (keyup)="applyFilter($event)"
+          placeholder="Search..." #input
+          aria-label="Search..."
+          aria-describedby="basic-addon-search31" />
+      </div>
+    </div>
+  </div>
+
+
+  <div class="table-responsive text-nowrap example-container">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <!-- Checkbox Column -->
+      <ng-container matColumnDef="select" sticky>
+        <th mat-header-cell *matHeaderCellDef class="bg-secondary">
+          <mat-checkbox (change)="$event ? masterToggle() : null ; this.selection.hasValue() && isAllSelected() ? isButtonVisible = true  : isButtonVisible = false"
+                        [checked]="selection.hasValue() && isAllSelected()"
+                        [indeterminate]="selection.hasValue() && !isAllSelected()">
+          </mat-checkbox>
+        </th>
+        <td mat-cell *matCellDef="let row">
+          <mat-checkbox (click)="$event.stopPropagation()"
+                        (change)="$event ? selection.toggle(row) : null; !selection.selected.length ? this.isButtonVisible = false : this.isButtonVisible = true"
+                        [checked]="selection.isSelected(row)">
+          </mat-checkbox>
+        </td>
+      </ng-container>
+
+      <!-- institution Column -->
+      <ng-container matColumnDef="institution">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "institution" | translate }} </th>
+        <td mat-cell *matCellDef="let row"> {{row.institution ? row.institution.name: ''}} </td>
+      </ng-container>
+      <!-- year Column -->
+      <ng-container matColumnDef="year">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "year" | translate }} </th>
+        <td mat-cell *matCellDef="let row"> {{row.year ? row.year.year: ''}} </td>
+      </ng-container>
+      <!-- school Column -->
+      <ng-container matColumnDef="school">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "school" | translate }} </th>
+        <td mat-cell *matCellDef="let row"> {{row.school ? row.school.name: ''}} </td>
+      </ng-container>
+      <!-- class Column -->
+      <ng-container matColumnDef="class">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "class" | translate }} </th>
+        <td mat-cell *matCellDef="let row"> {{row.class ? row.class.code: ''}} </td>
+      </ng-container>
+      <!-- subject Column -->
+      <ng-container matColumnDef="subject">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "subject" | translate }} </th>
+        <td mat-cell *matCellDef="let row"> {{row.subject ? row.subject.name: ''}} </td>
+      </ng-container>
+      <!-- module Column -->
+      <ng-container matColumnDef="module">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "module" | translate }} </th>
+        <td mat-cell *matCellDef="let row"> {{row.module ? row.module.name: ''}} </td>
+      </ng-container>
+      <!-- teacher Column -->
+      <ng-container matColumnDef="teacher">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "teacher" | translate }} </th>
+        <td mat-cell *matCellDef="let row"> {{row.teacher ? row.teacher.name: ''}} </td>
+      </ng-container>
+      <!-- teacher2 Column -->
+      <ng-container matColumnDef="teacher2">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "teacher2" | translate }} </th>
+        <td mat-cell *matCellDef="let row"> {{row.teacher2 ? row.teacher2.name: ''}} </td>
+      </ng-container>
+      <!-- teacher3 Column -->
+      <ng-container matColumnDef="teacher3">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "teacher3" | translate }} </th>
+        <td mat-cell *matCellDef="let row"> {{row.teacher3 ? row.teacher3.name: ''}} </td>
+      </ng-container>
+      <!-- teacherCm Column -->
+      <ng-container matColumnDef="teacherCm">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "teacherCm" | translate }} </th>
+        <td mat-cell *matCellDef="let row"> {{row.teacherCm ? row.teacherCm.name: ''}} </td>
+      </ng-container>
+      <!-- teacherTd Column -->
+      <ng-container matColumnDef="teacherTd">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "teacherTd" | translate }} </th>
+        <td mat-cell *matCellDef="let row"> {{row.teacherTd ? row.teacherTd.name: ''}} </td>
+      </ng-container>
+      <!-- teacherTp Column -->
+      <ng-container matColumnDef="teacherTp">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "teacherTp" | translate }} </th>
+        <td mat-cell *matCellDef="let row"> {{row.teacherTp ? row.teacherTp.name: ''}} </td>
+      </ng-container>
+      <!-- teacherMark Column -->
+      <ng-container matColumnDef="teacherMark">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "teacherMark" | translate }} </th>
+        <td mat-cell *matCellDef="let row"> {{row.teacherMark ? row.teacherMark.name: ''}} </td>
+      </ng-container>
+      <!-- isActif Column -->
+      <ng-container matColumnDef="isActif">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "isActif" | translate }} </th>
+        <td mat-cell *matCellDef="let row" class="td-height"> {{ row.isActif }}</td>
+      </ng-container>
+      <!-- codeUVC Column -->
+      <ng-container matColumnDef="codeUVC">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "codeUVC" | translate }} </th>
+        <td mat-cell *matCellDef="let row" class="td-height"> {{ row.codeUVC }}</td>
+      </ng-container>
+      <!-- nameUVC Column -->
+      <ng-container matColumnDef="nameUVC">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "nameUVC" | translate }} </th>
+        <td mat-cell *matCellDef="let row" class="td-height"> {{ row.nameUVC }}</td>
+      </ng-container>
+      <!-- periodType Column -->
+      <ng-container matColumnDef="periodType">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "periodType" | translate }} </th>
+        <td mat-cell *matCellDef="let row"> {{row.periodType ? row.periodType.name: ''}} </td>
+      </ng-container>
+      <!-- position Column -->
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "position" | translate }} </th>
+        <td mat-cell *matCellDef="let row" class="td-height"> {{ row.position }}</td>
+      </ng-container>
+      <!-- coeff Column -->
+      <ng-container matColumnDef="coeff">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "coeff" | translate }} </th>
+        <td mat-cell *matCellDef="let row" class="td-height"> {{ row.coeff }}</td>
+      </ng-container>
+      <!-- principalRoom Column -->
+      <ng-container matColumnDef="principalRoom">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "principalRoom" | translate }} </th>
+        <td mat-cell *matCellDef="let row"> {{row.principalRoom ? row.principalRoom.name: ''}} </td>
+      </ng-container>
+      <!-- room2 Column -->
+      <ng-container matColumnDef="room2">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "room2" | translate }} </th>
+        <td mat-cell *matCellDef="let row"> {{row.room2 ? row.room2.name: ''}} </td>
+      </ng-container>
+      <!-- room3 Column -->
+      <ng-container matColumnDef="room3">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "room3" | translate }} </th>
+        <td mat-cell *matCellDef="let row"> {{row.room3 ? row.room3.name: ''}} </td>
+      </ng-container>
+      <!-- Room4 Column -->
+      <ng-container matColumnDef="Room4">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "Room4" | translate }} </th>
+        <td mat-cell *matCellDef="let row"> {{row.Room4 ? row.Room4.name: ''}} </td>
+      </ng-container>
+      <!-- room5 Column -->
+      <ng-container matColumnDef="room5">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "room5" | translate }} </th>
+        <td mat-cell *matCellDef="let row"> {{row.room5 ? row.room5.name: ''}} </td>
+      </ng-container>
+      <!-- room6 Column -->
+      <ng-container matColumnDef="room6">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "room6" | translate }} </th>
+        <td mat-cell *matCellDef="let row"> {{row.room6 ? row.room6.name: ''}} </td>
+      </ng-container>
+      <!-- room7 Column -->
+      <ng-container matColumnDef="room7">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "room7" | translate }} </th>
+        <td mat-cell *matCellDef="let row"> {{row.room7 ? row.room7.name: ''}} </td>
+      </ng-container>
+      <!-- room8 Column -->
+      <ng-container matColumnDef="room8">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "room8" | translate }} </th>
+        <td mat-cell *matCellDef="let row"> {{row.room8 ? row.room8.name: ''}} </td>
+      </ng-container>
+      <!-- room9 Column -->
+      <ng-container matColumnDef="room9">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "room9" | translate }} </th>
+        <td mat-cell *matCellDef="let row"> {{row.room9 ? row.room9.name: ''}} </td>
+      </ng-container>
+      <!-- nature Column -->
+      <ng-container matColumnDef="nature">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "nature" | translate }} </th>
+        <td mat-cell *matCellDef="let row"> {{row.nature ? row.nature.name: ''}} </td>
+      </ng-container>
+
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions" stickyEnd>
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "actions" | translate }} </th>
+        <td mat-cell *matCellDef="let row" class="td-height">
+          <i class="text-primary fas fa-edit me-2" matTooltip="Edit" (click)="openEditForm(row)" style="font-size: 18px; padding-top: 10px; padding-bottom: 10px; cursor: pointer"></i>
+          <i class="text-danger fas fa-trash" matTooltip="Delete" (click)="delete(row.id)" style="font-size: 18px; padding-top: 10px; padding-bottom: 10px; cursor: pointer"></i>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="mat-row"></tr>
+
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td colspan="4">No data matching the filter "{{input.value}}"</td>
+      </tr>
+    </table>
+
+    <mat-card-content *ngIf="isLoading" style="display: flex; padding: 20px 0; justify-content: center; align-items: center">
+
+      <div class="spinner-border" style="width: 3rem; height: 3rem" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+
+    </mat-card-content>
+  </div>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons aria-label="Select page of users" class="mat-mdc-text-field-wrapper"></mat-paginator>
+</div>

@@ -1,0 +1,31 @@
+export class ClassProgram {
+  id!: number;
+  institution!: string[];
+  year!: string[];
+  school!: string[];
+  class!: string[];
+  subject!: string[];
+  module!: string[];
+  teacher!: string[];
+  teacher2!: string[];
+  teacher3!: string[];
+  teacherCm!: string[];
+  teacherTd!: string[];
+  teacherTp!: string[];
+  teacherMark!: string[];
+  periodType!: string[];
+  isActif!: boolean;
+  codeUVC!: string;
+  nameUVC!: string;
+  position!: number;
+  coeff!: number;
+  principalRoom!: string[];
+  room2!: string[];
+  room3!: string[];
+  Room4!: string[];
+  room5!: string[];
+  room6!: string[];
+  room7!: string[];
+  room8!: string[];
+  room9!: string[];
+}

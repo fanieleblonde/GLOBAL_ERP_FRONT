@@ -1,0 +1,120 @@
+<!-- BEGIN: Content-->
+<div class="card">
+
+  <!--<h5 class="card-header" style="margin-top: -10px;">{{ "list_of_campus" | translate }}</h5>-->
+
+  <div class="card-header header-elements">
+    <span class="me-2">{{ "list_of_grading" | translate }}</span>
+
+    <div class="card-header-elements ms-auto">
+
+      <div class="input-group input-group-merge">
+        <span class="input-group-text" id="basic-addon-search31"><i class="ti ti-search"></i></span>
+        <input
+          type="text"
+          class="form-control form-control-sm"
+          (keyup)="applyFilter($event)"
+          placeholder="Search..." #input
+          aria-label="Search..."
+          aria-describedby="basic-addon-search31" />
+      </div>
+
+      <button type="button" class="btn btn-sm btn-primary waves-effect waves-float waves-light" (click)="openAddForm()">
+        <span class="tf-icon ti ti-plus ti-xs me-1"></span> {{ "new" | translate }}
+      </button>
+
+    </div>
+  </div>
+
+  <div class="card-body">
+    <div class="table-responsive text-nowrap example-container">
+      <table mat-table [dataSource]="dataSource" matSort>
+
+        <!-- Checkbox Column -->
+        <ng-container matColumnDef="select" sticky>
+          <th mat-header-cell *matHeaderCellDef>
+            <mat-checkbox (change)="$event ? masterToggle() : null ; this.selection.hasValue() && isAllSelected() ? isButtonVisible = true  : isButtonVisible = false"
+                          [checked]="selection.hasValue() && isAllSelected()"
+                          [indeterminate]="selection.hasValue() && !isAllSelected()">
+            </mat-checkbox>
+          </th>
+          <td mat-cell *matCellDef="let row">
+            <mat-checkbox (click)="$event.stopPropagation()"
+                          (change)="$event ? selection.toggle(row) : null; !selection.selected.length ? this.isButtonVisible = false : this.isButtonVisible = true"
+                          [checked]="selection.isSelected(row)">
+            </mat-checkbox>
+          </td>
+        </ng-container>
+
+        <!-- Year Column -->
+        <ng-container matColumnDef="year">
+          <th mat-header-cell *matHeaderCellDef class="mat-cell"> {{ "year" | translate }} </th>
+          <td mat-cell *matCellDef="let row" class="td-height"> {{ row.year }}</td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="diploma">
+          <th mat-header-cell *matHeaderCellDef class="mat-cell"> {{ "diploma" | translate }} </th>
+          <td mat-cell *matCellDef="let row" class="td-height"> {{ row.diploma ? row.diploma.name: '' }}</td>
+        </ng-container>
+
+        <!-- Manager Column -->
+        <ng-container matColumnDef="grade">
+          <th mat-header-cell *matHeaderCellDef class="mat-cell"> {{ "grade" | translate }} </th>
+          <td mat-cell *matCellDef="let row" class="td-height"> {{ row.grade }}</td>
+        </ng-container>
+
+        <!-- Postal Code Column -->
+        <ng-container matColumnDef="minaverage">
+          <th mat-header-cell *matHeaderCellDef class="mat-cell"> {{ "minimum avaerage" | translate }} </th>
+          <td mat-cell *matCellDef="let row" class="td-height"> {{ row.minaverage }}</td>
+        </ng-container>
+
+        <!-- City Column -->
+        <ng-container matColumnDef="maxaverage">
+          <th mat-header-cell *matHeaderCellDef class="mat-cell"> {{ "maximum average" | translate }} </th>
+          <td mat-cell *matCellDef="let row" class="td-height"> {{ row.maxaverage }}</td>
+        </ng-container>
+
+        <!-- Phone Column -->
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef class="mat-cell"> {{ "status" | translate }} </th>
+          <td mat-cell *matCellDef="let row" class="td-height"> {{ row.status }}</td>
+        </ng-container>
+
+        <!-- Actions Column -->
+        <ng-container matColumnDef="actions" stickyEnd>
+          <th mat-header-cell *matHeaderCellDef class="mat-cell"> {{ "actions" | translate }} </th>
+          <td mat-cell *matCellDef="let row" class="td-height">
+            <i class="ti ti-edit text-primary pt-2 pb-2" matTooltip="Edit" style="cursor: pointer"
+               aria-label="Button that shows a red tooltip" (click)="openEditForm(row)"></i>
+            <i class="ti ti-trash text-danger pt-2 pb-2" matTooltip="Delete" style="cursor: pointer" (click)="delete(row.id)"></i>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="mat-row"></tr>
+
+        <!-- Row shown when there is no matching data. -->
+        <tr class="mat-row" *matNoDataRow>
+          <td colspan="4" style="text-align: center">{{ "no_data_matching_the_filter" | translate }} "{{input.value}}"</td>
+        </tr>
+      </table>
+
+      <mat-card-content *ngIf="isLoading" style="display: flex; padding: 60px 0; justify-content: center; align-items: center">
+
+        <div class="sk-wave sk-primary">
+          <div class="sk-wave-rect"></div>
+          <div class="sk-wave-rect"></div>
+          <div class="sk-wave-rect"></div>
+          <div class="sk-wave-rect"></div>
+          <div class="sk-wave-rect"></div>
+        </div>
+
+      </mat-card-content>
+
+    </div>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons aria-label="Select page of users" class="mat-mdc-text-field-wrapper"></mat-paginator>
+  </div>
+
+</div>

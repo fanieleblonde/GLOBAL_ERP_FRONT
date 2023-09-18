@@ -1,0 +1,55 @@
+
+<app-modal>
+  <ng-container header>{{ "status" | translate}}</ng-container>
+
+  <ng-container body>
+    <form [formGroup]="statusForm" (ngSubmit)="onFormSubmit()" id="ngForm">
+      <div mat-dialog-content>
+
+        <div class="row">
+          <div class="col-md-4">
+            <label class="form-label">{{ "code" | translate}} <span class="text-danger">*</span></label>
+            <input class="form-control form-control-sm" type="text" placeholder="Ex. Security" formControlName="code" [ngClass]="{'is-invalid': fc['code'].invalid && isSubmitted}">
+            <small class="invalid-feedback fst-italic" *ngIf="fc['name'].errors?.['required']">This field is required</small>
+            <div class="invalid-feedback" *ngIf="fc['code'].errors?.['minlength']">Code must be at least 3 characters long</div>
+            <div class="invalid-feedback" *ngIf="fc['code'].errors?.['serverError']">
+              {{ fc['code'].errors?.['serverError'] }}
+            </div>
+          </div>
+
+          <div class="col-md-8">
+            <label class="form-label">{{ "name" | translate}} <span class="text-danger">*</span></label>
+            <input class="form-control form-control-sm" type="text" placeholder="Ex. Security" formControlName="name" [ngClass]="{'is-invalid': fc['name'].invalid && isSubmitted}">
+            <small class="invalid-feedback fst-italic" *ngIf="fc['name'].errors?.['required']">This field is required</small>
+            <div class="invalid-feedback" *ngIf="fc['name'].errors?.['minlength']">Name must be at least 3 characters long</div>
+            <div class="invalid-feedback" *ngIf="fc['name'].errors?.['serverError']">
+              {{ fc['name'].errors?.['serverError'] }}
+            </div>
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </form>
+
+  </ng-container>
+
+  <button footer form="ngForm" (submit)="onFormSubmit()" type="submit" class="btn btn-sm btn-primary" [disabled]=saving>
+    <ng-container *ngIf="!saving; else isSaving">{{data ? edit : create}}</ng-container>
+    <ng-template #isSaving>
+      {{ "Submitting" | translate}} ...
+    </ng-template>
+  </button>
+
+
+</app-modal>
+
+
+
+
+
+
+
+

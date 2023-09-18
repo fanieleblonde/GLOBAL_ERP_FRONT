@@ -1,0 +1,66 @@
+
+<app-modal>
+  <ng-container header>{{ "room" | translate}}</ng-container>
+
+  <ng-container body>
+    <form [formGroup]="roomForm" (ngSubmit)="onFormSubmit()" id="ngForm">
+      <div mat-dialog-content>
+
+        <div class="row">
+
+          <div class="col-md-6">
+            <label class="form-label">{{ "name" | translate}} <span class="text-danger">*</span></label>
+            <input class="form-control form-control-sm" type="text" placeholder="Ex. A" formControlName="name" [ngClass]="{'is-invalid': fc['name'].invalid && isSubmitted}">
+            <small class="invalid-feedback fst-italic" *ngIf="fc['name'].errors?.['required']">This field is required</small>
+            <div class="invalid-feedback fst-italic" *ngIf="fc['name'].errors?.['serverError']">
+              {{ fc['name'].errors?.['serverError'] }}
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">{{ "capacity" | translate}} <span class="text-danger">*</span></label>
+            <input class="form-control form-control-sm" type="number" placeholder="Ex. A" formControlName="capacity" [ngClass]="{'is-invalid': fc['capacity'].invalid && isSubmitted}">
+            <small class="invalid-feedback fst-italic" *ngIf="fc['capacity'].errors?.['required']">This field is required</small>
+            <div class="invalid-feedback fst-italic" *ngIf="fc['capacity'].errors?.['serverError']">
+              {{ fc['capacity'].errors?.['serverError'] }}
+            </div>
+          </div>
+        </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <label class="form-label">{{ "building" | translate}} <span class="text-danger">*</span></label>
+          <ng-select
+            [items]="buildingList"
+            bindLabel="name"
+            bindValue="id"
+            placeholder="Choose building"
+            formControlName="building"
+            [ngClass]="{'is-invalid': fc['building'].invalid && isSubmitted}"
+            [(ngModel)]="buildingListSelect">
+          </ng-select>
+          <div class="invalid-feedback fst-italic" *ngIf="fc['building'].errors?.['required']">This field is required</div>
+        </div>
+      </div>
+      </div>
+    </form>
+
+  </ng-container>
+
+  <button footer form="ngForm" (submit)="onFormSubmit()" type="submit" class="btn btn-sm btn-primary" [disabled]=saving>
+    <ng-container *ngIf="!saving; else isSaving">{{data ? edit : create}}</ng-container>
+    <ng-template #isSaving>
+      {{ "Submitting" | translate}} ...
+    </ng-template>
+  </button>
+
+
+</app-modal>
+
+
+
+
+
+
+
+

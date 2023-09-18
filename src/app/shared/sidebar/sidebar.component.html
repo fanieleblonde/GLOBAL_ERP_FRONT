@@ -1,0 +1,770 @@
+<!-- BEGIN: Main Menu-->
+<div class="horizontal-menu-wrapper">
+  <div class="header-navbar navbar-expand-sm navbar navbar-horizontal floating-nav navbar-light navbar-shadow menu-border container-xxl" role="navigation" data-menu="menu-wrapper" data-menu-type="floating-nav">
+    <div class="navbar-header">
+      <ul class="nav navbar-nav flex-row">
+        <li class="nav-item me-auto"><a class="navbar-brand" href="../../../html/ltr/horizontal-menu-template/index.html">
+          <span class="brand-logo">
+              <svg viewbox="0 0 139 95" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="24">
+                  <defs>
+                      <lineargradient id="linearGradient-1" x1="100%" y1="10.5120544%" x2="50%" y2="89.4879456%">
+                          <stop stop-color="#000000" offset="0%"></stop>
+                          <stop stop-color="#FFFFFF" offset="100%"></stop>
+                      </lineargradient>
+                      <lineargradient id="linearGradient-2" x1="64.0437835%" y1="46.3276743%" x2="37.373316%" y2="100%">
+                          <stop stop-color="#EEEEEE" stop-opacity="0" offset="0%"></stop>
+                          <stop stop-color="#FFFFFF" offset="100%"></stop>
+                      </lineargradient>
+                  </defs>
+                  <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                      <g id="Artboard" transform="translate(-400.000000, -178.000000)">
+                          <g id="Group" transform="translate(400.000000, 178.000000)">
+                              <path class="text-primary" id="Path" d="M-5.68434189e-14,2.84217094e-14 L39.1816085,2.84217094e-14 L69.3453773,32.2519224 L101.428699,2.84217094e-14 L138.784583,2.84217094e-14 L138.784199,29.8015838 C137.958931,37.3510206 135.784352,42.5567762 132.260463,45.4188507 C128.736573,48.2809251 112.33867,64.5239941 83.0667527,94.1480575 L56.2750821,94.1480575 L6.71554594,44.4188507 C2.46876683,39.9813776 0.345377275,35.1089553 0.345377275,29.8015838 C0.345377275,24.4942122 0.230251516,14.560351 -5.68434189e-14,2.84217094e-14 Z" style="fill:currentColor"></path>
+                              <path id="Path1" d="M69.3453773,32.2519224 L101.428699,1.42108547e-14 L138.784583,1.42108547e-14 L138.784199,29.8015838 C137.958931,37.3510206 135.784352,42.5567762 132.260463,45.4188507 C128.736573,48.2809251 112.33867,64.5239941 83.0667527,94.1480575 L56.2750821,94.1480575 L32.8435758,70.5039241 L69.3453773,32.2519224 Z" fill="url(#linearGradient-1)" opacity="0.2"></path>
+                              <polygon id="Path-2" fill="#000000" opacity="0.049999997" points="69.3922914 32.4202615 32.8435758 70.5039241 54.0490008 16.1851325"></polygon>
+                              <polygon id="Path-21" fill="#000000" opacity="0.099999994" points="69.3922914 32.4202615 32.8435758 70.5039241 58.3683556 20.7402338"></polygon>
+                              <polygon id="Path-3" fill="url(#linearGradient-2)" opacity="0.099999994" points="101.428699 0 83.0667527 94.1480575 130.378721 47.0740288"></polygon>
+                          </g>
+                      </g>
+                  </g>
+              </svg>
+          </span>
+          <h2 class="brand-text mb-0">Vuexy</h2>
+        </a></li>
+        <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pe-0" data-bs-toggle="collapse"><i class="d-block d-xl-none text-primary toggle-icon font-medium-4" data-feather="x"></i></a></li>
+      </ul>
+    </div>
+    <div class="shadow-bottom"></div>
+    <!-- Horizontal menu content-->
+    <div class="navbar-container main-menu-content" data-menu="menu-container">
+      <!-- include ../../../includes/mixins-->
+      <ul class="nav navbar-nav" id="main-menu-navigation" data-menu="menu-navigation">
+        <li routerLinkActive="active" class="dropdown nav-item" data-menu="dropdown"><a class="dropdown-toggle nav-link d-flex align-items-center" href="index.html" data-bs-toggle="dropdown"><i data-feather="home"></i><span data-i18n="Dashboards">Dashboards</span></a>
+          <ul class="dropdown-menu" data-bs-popper="none">
+            <li routerLinkActive="active" data-menu="">
+              <a class="dropdown-item d-flex align-items-center" routerLink="/school/analysis" data-bs-toggle="" data-i18n="Analytics">
+                <i data-feather="activity"></i>
+                <span data-i18n="Analytics">Analytics</span>
+              </a>
+            </li>
+            <li data-menu="">
+              <a class="dropdown-item d-flex align-items-center" href="dashboard-ecommerce.html" data-bs-toggle="" data-i18n="eCommerce">
+                <i data-feather="shopping-cart"></i>
+                <span data-i18n="eCommerce">eCommerce</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li routerLinkActive="active" class="dropdown nav-item" data-menu="dropdown">
+          <a class="dropdown-toggle nav-link d-flex align-items-center" href="#" data-bs-toggle="dropdown">
+            <i data-feather="file-text"></i>
+            <span data-i18n="Pages">{{ "schooling" | translate}}</span>
+          </a>
+
+          <ul class="dropdown-menu" data-bs-popper="none">
+            <li class="dropdown dropdown-submenu" data-menu="dropdown-submenu">
+              <a class="dropdown-item d-flex align-items-center dropdown-toggle" href="#" data-bs-toggle="dropdown" data-i18n="Account Settings">
+                <i data-feather="settings"></i>
+                <span data-i18n="Account Settings">{{ "settings" | translate}}</span>
+              </a>
+              <ul class="dropdown-menu" data-bs-popper="none">
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/campus" data-bs-toggle="" data-i18n="Account">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Account">{{ 'campus' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/building" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'building' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/room" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'room' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/school" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'school' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/cycle" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'cycle' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/department" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'department' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/program" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'program' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/level" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'level' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/speciality" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'speciality' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/option" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'option' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/training/type" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'training type' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/class/category" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'class category' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/school/class" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'school class' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/school/year" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'school_year' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/change/year" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'change_year' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/class/and/room" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'class_and_room' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/class/and/hourlyrate" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'class_and_hourlyrate' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/next/class" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'next_class' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/pension/scheme" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'pension scheme' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/pension/bracket" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'pension bracket' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/registration/form" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'registration form' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/costarea" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'costarea' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/tuition" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'tuition' | translate }}</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="dropdown dropdown-submenu" data-menu="dropdown-submenu"><a class="dropdown-item d-flex align-items-center dropdown-toggle" href="#" data-bs-toggle="dropdown" data-i18n="Account Settings"><i data-feather="settings"></i><span data-i18n="Account Settings">{{ "registration" | translate}}</span></a>
+              <ul class="dropdown-menu" data-bs-popper="none">
+                <li routerLinkActive="active" data-menu="">
+                <a class="dropdown-item d-flex align-items-center" routerLink="/school/family" data-bs-toggle="" data-i18n="Account">
+                  <i data-feather="circle"></i>
+                  <span data-i18n="Account">{{ 'family' | translate }}</span>
+                </a>
+              </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/student" data-bs-toggle="" data-i18n="Account">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Account">{{ 'Student' | translate }}</span>
+                  </a>
+                </li>
+
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/parent" data-bs-toggle="" data-i18n="Account">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Account">{{ 'Parent' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/Student/registration" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'Student Registration' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/Old/registration" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'Old Student Registration' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/Registration/perclass" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'Old Student Registration Per Class' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/school/origin" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'school_origin' | translate }}</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+
+          </ul>
+
+        </li>
+
+        <li routerLinkActive="active" class="dropdown nav-item" data-menu="dropdown">
+          <a class="dropdown-toggle nav-link d-flex align-items-center" href="#" data-bs-toggle="dropdown">
+            <i data-feather="file-text"></i>
+            <span data-i18n="Pages">{{ "study" | translate}}</span>
+          </a>
+          <ul class="dropdown-menu" data-bs-popper="none">
+
+            <li class="dropdown dropdown-submenu" data-menu="dropdown-submenu"><a class="dropdown-item d-flex align-items-center dropdown-toggle" href="#" data-bs-toggle="dropdown" data-i18n="Account Settings"><i data-feather="settings"></i><span data-i18n="Account Settings">{{ "settings" | translate}}</span></a>
+              <ul class="dropdown-menu" data-bs-popper="none">
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/module/category" data-bs-toggle="" data-i18n="Account">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Account">{{ 'module_category' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/course/module" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'course-module' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/subject/type" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'subject_type' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/subject/nature" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'subject_nature' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/subject" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'subject' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/teacher" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'teacher' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/teacher/contact" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'teacher_contact' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/teacher/identity" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'teacher_identity' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/class/program" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'class_program' | translate }}</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+          </ul>
+        </li>
+        <li routerLinkActive="active" class="dropdown nav-item" data-menu="dropdown">
+          <a class="dropdown-toggle nav-link d-flex align-items-center" href="#" data-bs-toggle="dropdown">
+            <i data-feather="file-text"></i>
+            <span data-i18n="Pages">{{ "exam" | translate}}</span>
+          </a>
+          <ul class="dropdown-menu" data-bs-popper="none">
+            <li class="dropdown dropdown-submenu" data-menu="dropdown-submenu"><a class="dropdown-item d-flex align-items-center dropdown-toggle" href="#" data-bs-toggle="dropdown" data-i18n="Account Settings"><i data-feather="settings"></i><span data-i18n="Account Settings">{{ "settings" | translate}}</span></a>
+              <ul class="dropdown-menu" data-bs-popper="none">
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/evaluation/period" data-bs-toggle="" data-i18n="Account">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Account">{{ 'evaluation_period' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/sequence" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'sequence' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/diploma" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'diploma' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/note/type" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'note_type' | translate }}</span>
+                  </a>
+                </li>
+
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/class/weighting" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'class_weighting' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/cycle/weighting" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'cycle_weighting' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/school/weighting" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'school_weighting' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/speciality/weighting" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'speciality_weighting' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/formula/th" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'formula_th' | translate }}</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown dropdown-submenu" data-menu="dropdown-submenu"><a class="dropdown-item d-flex align-items-center dropdown-toggle" href="#" data-bs-toggle="dropdown" data-i18n="Account Settings"><i data-feather="settings"></i><span data-i18n="Account Settings">{{ "National exam" | translate}}</span></a>
+              <ul class="dropdown-menu" data-bs-popper="none">
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/test/group" data-bs-toggle="" data-i18n="Account">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Account">{{ 'test_group' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/test/material" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'test_material' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/national/exam" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'national_exam' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/concour" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'concour' | translate }}</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="dropdown dropdown-submenu" data-menu="dropdown-submenu"><a class="dropdown-item d-flex align-items-center dropdown-toggle" href="#" data-bs-toggle="dropdown" data-i18n="Account Settings"><i data-feather="settings"></i><span data-i18n="Account Settings">{{ "internship" | translate}}</span></a>
+              <ul class="dropdown-menu" data-bs-popper="none">
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/diploma/mension" data-bs-toggle="" data-i18n="Account">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Account">{{ 'diploma_mension' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/quality" data-bs-toggle="" data-i18n="Account">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Account">{{ 'quality' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/student/internship" data-bs-toggle="" data-i18n="Account">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Account">{{ 'student_internship' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/graduation" data-bs-toggle="" data-i18n="Account">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Account">{{ 'graduation' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/certification" data-bs-toggle="" data-i18n="Account">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Account">{{ 'certification' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/research/work" data-bs-toggle="" data-i18n="Account">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Account">{{ 'research_work' | translate }}</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+          </ul>
+        </li>
+        <li routerLinkActive="active" class="dropdown nav-item" data-menu="dropdown">
+          <a class="dropdown-toggle nav-link d-flex align-items-center" href="#" data-bs-toggle="dropdown">
+            <i data-feather="file-text"></i>
+            <span data-i18n="Pages">{{ "setting" | translate}}</span>
+          </a>
+          <ul class="dropdown-menu" data-bs-popper="none">
+            <li class="dropdown dropdown-submenu" data-menu="dropdown-submenu"><a class="dropdown-item d-flex align-items-center dropdown-toggle" href="#" data-bs-toggle="dropdown" data-i18n="Account school"><i data-feather="school"></i><span data-i18n="Account Settings">{{ "institution" | translate}}</span></a>
+              <ul class="dropdown-menu" data-bs-popper="none">
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/ministry" data-bs-toggle="" data-i18n="Account">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Account">{{ 'ministry' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/manager/type" data-bs-toggle="" data-i18n="Account">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Account">{{ 'manager_type' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/school/session" data-bs-toggle="" data-i18n="Account">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Account">{{ 'school_session' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/school/period" data-bs-toggle="" data-i18n="Account">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Account">{{ 'school_period' | translate }}</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+
+            <li class="dropdown dropdown-submenu" data-menu="dropdown-submenu"><a class="dropdown-item d-flex align-items-center dropdown-toggle" href="#" data-bs-toggle="dropdown" data-i18n="Account school"><i data-feather="school"></i><span data-i18n="Account Settings">{{ "location" | translate}}</span></a>
+              <ul class="dropdown-menu" data-bs-popper="none">
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/country" data-bs-toggle="" data-i18n="Account">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Account">{{ 'country' | translate }}</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+
+             <li class="dropdown dropdown-submenu" data-menu="dropdown-submenu"><a class="dropdown-item d-flex align-items-center dropdown-toggle" href="#" data-bs-toggle="dropdown" data-i18n="Account school"><i data-feather="school"></i><span data-i18n="Account Settings">{{ "Person" | translate}}</span></a>
+              <ul class="dropdown-menu" data-bs-popper="none">
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/sex" data-bs-toggle="" data-i18n="Account">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Account">{{ 'Sex' | translate }}</span>
+                  </a>
+                </li>
+
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/religion" data-bs-toggle="" data-i18n="Account">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Account">{{ 'Religion' | translate }}</span>
+                  </a>
+                </li>
+
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/blood-group" data-bs-toggle="" data-i18n="Account">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Account">{{ 'Blood Group' | translate }}</span>
+                  </a>
+                </li>
+
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/civility" data-bs-toggle="" data-i18n="Account">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Account">{{ 'Civility' | translate }}</span>
+                  </a>
+                </li>
+
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/identity-type" data-bs-toggle="" data-i18n="Account">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Account">{{ 'Identity Type' | translate }}</span>
+                  </a>
+                </li>
+
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/marital-status" data-bs-toggle="" data-i18n="Account">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Account">{{ 'Marital Status' | translate }}</span>
+                  </a>
+                </li>
+
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/rhesus" data-bs-toggle="" data-i18n="Account">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Account">{{ 'Rhesus' | translate }}</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="dropdown dropdown-submenu" data-menu="dropdown-submenu"><a class="dropdown-item d-flex align-items-center dropdown-toggle" href="#" data-bs-toggle="dropdown" data-i18n="Account school"><i data-feather="school"></i><span data-i18n="Account Settings">{{ "school" | translate}}</span></a>
+              <ul class="dropdown-menu" data-bs-popper="none">
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/period/type" data-bs-toggle="" data-i18n="Account">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Account">{{ 'period_type' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/diploma/type" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'diploma_type' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/status" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'status' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/target" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'target' | translate }}</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="dropdown dropdown-submenu" data-menu="dropdown-submenu"><a class="dropdown-item d-flex align-items-center dropdown-toggle" href="#" data-bs-toggle="dropdown" data-i18n="Account school"><i data-feather="school"></i><span data-i18n="Account Settings">{{ "Cost" | translate}}</span></a>
+              <ul class="dropdown-menu" data-bs-popper="none">
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/expense/heading" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'Expense Heading' | translate }}</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+          </ul>
+        </li>
+
+        <li routerLinkActive="active" class="dropdown nav-item" data-menu="dropdown">
+          <a class="dropdown-toggle nav-link d-flex align-items-center" href="#" data-bs-toggle="dropdown">
+            <i data-feather="file-text"></i>
+            <span data-i18n="Pages">{{ "Security" | translate}}</span>
+          </a>
+          <ul class="dropdown-menu" data-bs-popper="none">
+
+            <li class="dropdown dropdown-submenu" data-menu="dropdown-submenu"><a class="dropdown-item d-flex align-items-center dropdown-toggle" href="#" data-bs-toggle="dropdown" data-i18n="Account school"><i data-feather="school"></i><span data-i18n="Account Settings">{{ "setting" | translate}}</span></a>
+              <ul class="dropdown-menu" data-bs-popper="none">
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/institution" data-bs-toggle="" data-i18n="Account">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Account">{{ 'institution' | translate }}</span>
+                  </a>
+                </li>
+
+
+              </ul>
+            </li>
+
+          </ul>
+        </li>
+        <li routerLinkActive="active" class="dropdown nav-item" data-menu="dropdown">
+          <a class="dropdown-toggle nav-link d-flex align-items-center" href="#" data-bs-toggle="dropdown">
+            <i data-feather="file-text"></i>
+            <span data-i18n="Pages">{{ "Accounting" | translate}}</span>
+          </a>
+          <ul class="dropdown-menu" data-bs-popper="none">
+
+            <li class="dropdown dropdown-submenu" data-menu="dropdown-submenu"><a class="dropdown-item d-flex align-items-center dropdown-toggle" href="#" data-bs-toggle="dropdown" data-i18n="Account school"><i data-feather="school"></i><span data-i18n="Account Settings">{{ "setting" | translate}}</span></a>
+              <ul class="dropdown-menu" data-bs-popper="none">
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/bank" data-bs-toggle="" data-i18n="Account">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Account">{{ 'bank' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/bank/account" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'bank_account' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/cash/desk" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'cash_desk' | translate }}</span>
+                  </a>
+                </li>
+
+              </ul>
+            </li>
+
+          </ul>
+        </li>
+
+        <li routerLinkActive="active" class="dropdown nav-item" data-menu="dropdown">
+          <a class="dropdown-toggle nav-link d-flex align-items-center" href="#" data-bs-toggle="dropdown">
+            <i data-feather="file-text"></i>
+            <span data-i18n="Pages">{{ "Others" | translate}}</span>
+          </a>
+          <ul class="dropdown-menu" data-bs-popper="none">
+
+            <li class="dropdown dropdown-submenu" data-menu="dropdown-submenu"><a class="dropdown-item d-flex align-items-center dropdown-toggle" href="#" data-bs-toggle="dropdown" data-i18n="Account school"><i data-feather="school"></i><span data-i18n="Account Settings">{{ "setting" | translate}}</span></a>
+              <ul class="dropdown-menu" data-bs-popper="none">
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/skill" data-bs-toggle="" data-i18n="Account">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Account">{{ 'skill' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/skill/type" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'skill_type' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/departure/reason" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'departure_reason' | translate }}</span>
+                  </a>
+                </li>
+
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/employment/type" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'employment_type' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/job/position" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'job_position' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/work/location" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'work_location' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/tag" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'tag' | translate }}</span>
+                  </a>
+                </li>
+
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/rank" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'rank' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/job/location" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'job_location' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/degree" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'degree' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/department" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'department' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/application/source" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'application_source' | translate }}</span>
+                  </a>
+                </li>
+                <li routerLinkActive="active" data-menu="">
+                  <a class="dropdown-item d-flex align-items-center" routerLink="/school/contract/template" data-bs-toggle="" data-i18n="Security">
+                    <i data-feather="circle"></i>
+                    <span data-i18n="Security">{{ 'contract_template' | translate }}</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+          </ul>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- END: Main Menu-->

@@ -1,0 +1,295 @@
+<!-- BEGIN: Content-->
+<br><br><br>
+<div class="content-header row">
+  <div class="content-header-left col-md-8 col-12 mb-2">
+    <div class="row breadcrumbs-top">
+      <div class="col-12">
+        <h3 class="content-header-title float-start mb-0">{{ "formular_th" | translate}}</h3>
+        <div class="breadcrumb-wrapper">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html" i18n>{{ "school" | translate}}</a>
+            </li>
+            <li class="breadcrumb-item"><a href="#" i18n>{{ "setting" | translate}}</a>
+            </li>
+            <li class="breadcrumb-item active" i18n>{{ "formular_th" | translate}}
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="text-md-end col-md-4 col-12 d-md-block d-none">
+    <!-- content-header-right -->
+    <!--    <div class="btn-group dropdown-sort" *ngIf="this.isButtonVisible">-->
+    <!--      <button type="button" class="btn-sm  btn-outline-primary dropdown-toggle me-1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+    <!--        <span class="active-sorting">Featured</span>-->
+    <!--      </button>-->
+    <!--      <div class="dropdown-menu">-->
+    <!--        <a class="dropdown-item" (click)="">Delete</a>-->
+    <!--      </div>-->
+    <!--    </div>-->
+
+    <button type="button" class="btn btn-primary waves-effect waves-float waves-light" (click)="openAddForm()">
+      <i class="fas fa-plus me-25"></i> {{ "new" | translate }}
+    </button>
+  </div>
+</div>
+
+
+<div class="card">
+  <h6 class="card-header" style="margin-top: -10px;">{{ "list_of_formular_th" | translate }}</h6>
+
+  <div class="row" style="margin-top: -15px;">
+    <div class="col-md-4 mb-2 ms-2">
+      <div class="input-group input-group-merge">
+        <span class="input-group-text" id="basic-addon-search31"><i class="ti ti-search"></i></span>
+        <input
+          type="text"
+          class="form-control form-control-sm"
+          (keyup)="applyFilter($event)"
+          placeholder="Search..." #input
+          aria-label="Search..."
+          aria-describedby="basic-addon-search31" />
+      </div>
+    </div>
+    <div class="col-md-6">
+      User Current school year : {{ currentUserSchoolYearValue }}
+    </div>
+
+  </div>
+
+
+  <div class="table-responsive text-nowrap example-container">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <!-- Checkbox Column -->
+      <ng-container matColumnDef="select" sticky>
+        <th mat-header-cell *matHeaderCellDef class="bg-secondary">
+          <mat-checkbox (change)="$event ? masterToggle() : null ; this.selection.hasValue() && isAllSelected() ? isButtonVisible = true  : isButtonVisible = false"
+                        [checked]="selection.hasValue() && isAllSelected()"
+                        [indeterminate]="selection.hasValue() && !isAllSelected()">
+          </mat-checkbox>
+        </th>
+        <td mat-cell *matCellDef="let row">
+          <mat-checkbox (click)="$event.stopPropagation()"
+                        (change)="$event ? selection.toggle(row) : null; !selection.selected.length ? this.isButtonVisible = false : this.isButtonVisible = true"
+                        [checked]="selection.isSelected(row)">
+          </mat-checkbox>
+        </td>
+      </ng-container>
+      <!-- institution Column -->
+      <ng-container matColumnDef="institution">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "institution" | translate }} </th>
+        <td mat-cell *matCellDef="let row"> {{row.institution ? row.institution.name: ''}} </td>
+      </ng-container>
+      <!-- year Column -->
+      <ng-container matColumnDef="year">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"r> {{ "year" | translate }} </th>
+        <td mat-cell *matCellDef="let row"> {{row.year ? row.year.year: ''}} </td>
+      </ng-container>
+
+      <!-- halfYearAvFml Column -->
+      <ng-container matColumnDef="halfYearAvFml">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "halfYearAvFml" | translate }} </th>
+        <td mat-cell *matCellDef="let row" class="td-height"> {{ row.halfYearAvFml }}</td>
+      </ng-container>
+      <!-- finalAvFml Column -->
+      <ng-container matColumnDef="finalAvFml">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "finalAvFml" | translate }} </th>
+        <td mat-cell *matCellDef="let row" class="td-height"> {{ row.finalAvFml }}</td>
+      </ng-container>
+      <!-- WarnCdtAbsence Column -->
+      <ng-container matColumnDef="WarnCdtAbsence">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "WarnCdtAbsence" | translate }} </th>
+        <td mat-cell *matCellDef="let row" class="td-height"> {{ row.WarnCdtAbsence }}</td>
+      </ng-container>
+      <!-- hrAbsence Column -->
+      <ng-container matColumnDef="hrAbsence">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "hrAbsence" | translate }} </th>
+        <td mat-cell *matCellDef="let row" class="td-height"> {{ row.hrAbsence }}</td>
+      </ng-container>
+      <!-- WarnCdtExclusion Column -->
+      <ng-container matColumnDef="WarnCdtExclusion">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "WarnCdtExclusion" | translate }} </th>
+        <td mat-cell *matCellDef="let row" class="td-height"> {{ row.WarnCdtExclusion }}</td>
+      </ng-container>
+      <!-- exclusionDay Column -->
+      <ng-container matColumnDef="exclusionDay">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "exclusionDay" | translate }} </th>
+        <td mat-cell *matCellDef="let row" class="td-height"> {{ row.exclusionDay }}</td>
+      </ng-container>
+
+      <!-- bmCdtAbsence Column -->
+      <ng-container matColumnDef="bmCdtAbsence">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "bmCdtAbsence" | translate }} </th>
+        <td mat-cell *matCellDef="let row" class="td-height"> {{ row.bmCdtAbsence }}</td>
+      </ng-container>
+      <!-- hrAbsence1 Column -->
+      <ng-container matColumnDef="hrAbsence1">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "hrAbsence1" | translate }} </th>
+        <td mat-cell *matCellDef="let row" class="td-height"> {{ row.hrAbsence1 }}</td>
+      </ng-container>
+      <!-- bmCdtExclusion Column -->
+      <ng-container matColumnDef="bmCdtExclusion">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "bmCdtExclusion" | translate }} </th>
+        <td mat-cell *matCellDef="let row" class="td-height"> {{ row.bmCdtExclusion }}</td>
+      </ng-container>
+      <!-- exclusionDay1 Column -->
+      <ng-container matColumnDef="exclusionDay1">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "exclusionDay1" | translate }} </th>
+        <td mat-cell *matCellDef="let row" class="td-height"> {{ row.exclusionDay1 }}</td>
+      </ng-container>
+      <!-- bmWrkAv Column -->
+      <ng-container matColumnDef="bmWrkAv">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "bmWrkAv" | translate }} </th>
+        <td mat-cell *matCellDef="let row" class="td-height"> {{ row.bmWrkAv }}</td>
+      </ng-container>
+      <!-- average1 Column -->
+      <ng-container matColumnDef="average1">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "average1" | translate }} </th>
+        <td mat-cell *matCellDef="let row" class="td-height"> {{ row.average1 }}</td>
+      </ng-container>
+
+      <!-- wrnWrkAv Column -->
+      <ng-container matColumnDef="wrnWrkAv">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "wrnWrkAv" | translate }} </th>
+        <td mat-cell *matCellDef="let row" class="td-height"> {{ row.wrnWrkAv }}</td>
+      </ng-container>
+      <!-- average2 Column -->
+      <ng-container matColumnDef="average2">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "average2" | translate }} </th>
+        <td mat-cell *matCellDef="let row" class="td-height"> {{ row.average2 }}</td>
+      </ng-container>
+      <!-- grtThCmp Column -->
+      <ng-container matColumnDef="grtThCmp">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "grtThCmp" | translate }} </th>
+        <td mat-cell *matCellDef="let row" class="td-height"> {{ row.grtThCmp }}</td>
+      </ng-container>
+
+      <!-- examAv Column -->
+      <ng-container matColumnDef="examAv">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "examAv" | translate }} </th>
+        <td mat-cell *matCellDef="let row" class="td-height"> {{ row.examAv }}</td>
+      </ng-container>
+      <!-- grtThAnn Column -->
+      <ng-container matColumnDef="grtThAnn">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "grtThAnn" | translate }} </th>
+        <td mat-cell *matCellDef="let row" class="td-height"> {{ row.grtThAnn }}</td>
+      </ng-container>
+      <!-- yearAv Column -->
+      <ng-container matColumnDef="yearAv">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "yearAv" | translate }} </th>
+        <td mat-cell *matCellDef="let row" class="td-height"> {{ row.yearAv }}</td>
+      </ng-container>
+
+
+      <!-- encouragement Column -->
+      <ng-container matColumnDef="encouragement">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "encouragement" | translate }} </th>
+        <td mat-cell *matCellDef="let row" class="td-height"> {{ row.encouragement }}</td>
+      </ng-container>
+      <!-- average3 Column -->
+      <ng-container matColumnDef="average3">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "average3" | translate }} </th>
+        <td mat-cell *matCellDef="let row" class="td-height"> {{ row.average3 }}</td>
+      </ng-container>
+      <!-- congratulation Column -->
+      <ng-container matColumnDef="congratulation">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "congratulation" | translate }} </th>
+        <td mat-cell *matCellDef="let row" class="td-height"> {{ row.congratulation }}</td>
+      </ng-container>
+
+      <!-- average4 Column -->
+      <ng-container matColumnDef="average4">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "average4" | translate }} </th>
+        <td mat-cell *matCellDef="let row" class="td-height"> {{ row.average4 }}</td>
+      </ng-container>
+      <!-- refuseAbsence Column -->
+      <ng-container matColumnDef="refuseAbsence">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "refuseAbsence" | translate }} </th>
+        <td mat-cell *matCellDef="let row" class="td-height"> {{ row.refuseAbsence }}</td>
+      </ng-container>
+      <!-- hrAbsence2 Column -->
+      <ng-container matColumnDef="hrAbsence2">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "hrAbsence2" | translate }} </th>
+        <td mat-cell *matCellDef="let row" class="td-height"> {{ row.hrAbsence2 }}</td>
+      </ng-container>
+      <!-- refuseExclusion Column -->
+      <ng-container matColumnDef="refuseExclusion">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "refuseExclusion" | translate }} </th>
+        <td mat-cell *matCellDef="let row" class="td-height"> {{ row.refuseExclusion }}</td>
+      </ng-container>
+      <!-- exclusionDay2 Column -->
+      <ng-container matColumnDef="exclusionDay2">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "exclusionDay2" | translate }} </th>
+        <td mat-cell *matCellDef="let row" class="td-height"> {{ row.exclusionDay2 }}</td>
+      </ng-container>
+      <!-- refuseSethour Column -->
+      <ng-container matColumnDef="refuseSethour">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "refuseSethour" | translate }} </th>
+        <td mat-cell *matCellDef="let row" class="td-height"> {{ row.refuseSethour }}</td>
+      </ng-container>
+
+      <!-- sethours Column -->
+      <ng-container matColumnDef="sethours">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "sethours" | translate }} </th>
+        <td mat-cell *matCellDef="let row" class="td-height"> {{ row.sethours }}</td>
+      </ng-container>
+      <!-- refuseBlame Column -->
+      <ng-container matColumnDef="refuseBlame">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "refuseBlame" | translate }} </th>
+        <td mat-cell *matCellDef="let row" class="td-height"> {{ row.refuseBlame }}</td>
+      </ng-container>
+      <!-- NumberOfBlame Column -->
+      <ng-container matColumnDef="NumberOfBlame">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "NumberOfBlame" | translate }} </th>
+        <td mat-cell *matCellDef="let row" class="td-height"> {{ row.NumberOfBlame }}</td>
+      </ng-container>
+
+      <!-- perSubjectNum Column -->
+      <ng-container matColumnDef="perSubjectNum">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "perSubjectNum" | translate }} </th>
+        <td mat-cell *matCellDef="let row" class="td-height"> {{ row.perSubjectNum }}</td>
+      </ng-container>
+      <!-- andOr Column -->
+      <ng-container matColumnDef="andOr">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "andOr" | translate }} </th>
+        <td mat-cell *matCellDef="let row" class="td-height"> {{ row.andOr }}</td>
+      </ng-container>
+      <!-- perTotalAv Column -->
+      <ng-container matColumnDef="perTotalAv">
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "perTotalAv" | translate }} </th>
+        <td mat-cell *matCellDef="let row" class="td-height"> {{ row.perTotalAv }}</td>
+      </ng-container>
+
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions" stickyEnd>
+        <th mat-header-cell *matHeaderCellDef class="mat-cell bg-secondary"> {{ "actions" | translate }} </th>
+        <td mat-cell *matCellDef="let row" class="td-height">
+          <i class="text-primary fas fa-edit me-2" matTooltip="Edit" (click)="openEditForm(row)" style="font-size: 18px; padding-top: 10px; padding-bottom: 10px; cursor: pointer"></i>
+          <i class="text-danger fas fa-trash" matTooltip="Delete" (click)="delete(row.id)" style="font-size: 18px; padding-top: 10px; padding-bottom: 10px; cursor: pointer"></i>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="mat-row"></tr>
+
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td colspan="4">No data matching the filter "{{input.value}}"</td>
+      </tr>
+    </table>
+
+    <mat-card-content *ngIf="isLoading" style="display: flex; padding: 20px 0; justify-content: center; align-items: center">
+
+      <div class="spinner-border" style="width: 3rem; height: 3rem" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+
+    </mat-card-content>
+  </div>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons aria-label="Select page of users" class="mat-mdc-text-field-wrapper"></mat-paginator>
+</div>

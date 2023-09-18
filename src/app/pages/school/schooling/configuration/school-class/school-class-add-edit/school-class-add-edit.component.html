@@ -1,0 +1,237 @@
+
+<app-modal>
+  <ng-container header>{{ "school_class" | translate}}</ng-container>
+
+  <ng-container body>
+    <form [formGroup]="schoolclassForm" (ngSubmit)="onFormSubmit()" id="ngForm">
+      <div mat-dialog-content>
+
+        <div class="row">
+
+          <div class="col-md-2">
+
+            <label class="form-label">{{ "year" | translate}}</label>
+            <ng-select
+              [items]="schoolyearList"
+              bindLabel="year"
+              bindValue="id"
+              placeholder="Choose year"
+              formControlName="year"
+              [(ngModel)]="schoolyearListSelect">
+            </ng-select>
+          </div>
+
+          <div class="col-md-2">
+            <label class="form-label">{{ "Code" | translate}} <span class="text-danger">*</span></label>
+            <input class="form-control form-control-sm" type="text" placeholder="Ex. A" formControlName="code" [ngClass]="{'is-invalid': fc['code'].invalid && isSubmitted}">
+            <small class="invalid-feedback fst-italic" *ngIf="fc['code'].errors?.['required']">This field is required</small>
+            <div class="invalid-feedback" *ngIf="fc['code'].errors?.['minlength']">code must be at least 1 characters long</div>
+            <div class="invalid-feedback" *ngIf="fc['code'].errors?.['serverError']">{{ fc['name'].errors?.['serverError'] }}</div>
+          </div>
+
+          <div class="col-md-4">
+            <label class="form-label">{{ "description" | translate}} </label>
+            <input class="form-control form-control-sm" type="text" placeholder="Ex. A" formControlName="description" >
+          </div>
+
+          <div class="col-md-2">
+            <label class="form-label">{{ "school" | translate}} <span class="text-danger">*</span></label>
+            <ng-select
+              [items]="schoolList"
+              bindLabel="name"
+              bindValue="id"
+              placeholder="Choose school"
+              formControlName="school"
+              [ngClass]="{'is-invalid': fc['school'].invalid && isSubmitted}"
+              [(ngModel)]="schoolListSelect"
+              (ngModelChange)="applyFilterDepartement($event)">
+            </ng-select>
+            <small class="invalid-feedback fst-italic" *ngIf="fc['school'].errors?.['required']">This field is required</small>
+            <div class="invalid-feedback fst-italic" *ngIf="fc['school'].errors?.['serverError']">{{ fc['school'].errors?.['serverError'] }}</div>
+
+          </div>
+
+          <div class="col-md-2">
+            <label class="form-label">{{ "guardianship" | translate}}</label>
+            <ng-select
+              [items]="guardianshipList"
+              bindLabel="name"
+              bindValue="id"
+              placeholder="Choose guardianship"
+              formControlName="guardianship"
+              [(ngModel)]="guardianshipListSelect">
+            </ng-select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-2">
+            <label class="form-label">{{ "department" | translate}}<span class="text-danger">*</span></label>
+            <ng-select
+              [items]="departmentListFiltered"
+              bindLabel="name"
+              bindValue="id"
+              placeholder="Choose department"
+              formControlName="department"
+              [ngClass]="{'is-invalid': fc['department'].invalid && isSubmitted}"
+              [(ngModel)]="departmentListSelect">
+            </ng-select>
+            <small class="invalid-feedback fst-italic" *ngIf="fc['department'].errors?.['required']">This field is required</small>
+            <div class="invalid-feedback fst-italic" *ngIf="fc['department'].errors?.['serverError']">{{ fc['department'].errors?.['serverError'] }}</div>
+
+          </div>
+          <div class="col-md-2">
+            <label class="form-label">{{ "class_category" | translate}}</label>
+            <ng-select
+              [items]="categoryList"
+              bindLabel="name"
+              bindValue="id"
+              placeholder="Choose classCategory"
+              formControlName="classCategory"
+              [ngClass]="{'is-invalid': fc['classCategory'].invalid && isSubmitted}"
+              [(ngModel)]="categoryListSelect">
+            </ng-select>
+          </div>
+
+          <div class="col-md-2">
+            <label class="form-label">{{ "speciality" | translate}} <span class="text-danger">*</span></label>
+            <ng-select
+              [items]="specialityList"
+              bindLabel="name"
+              bindValue="id"
+              placeholder="Choose speciality"
+              formControlName="speciality"
+              [ngClass]="{'is-invalid': fc['speciality'].invalid && isSubmitted}"
+              [(ngModel)]="specialityListSelect"
+              (ngModelChange)="applyFilterlevel($event)">
+            </ng-select>
+            <small class="invalid-feedback fst-italic" *ngIf="fc['speciality'].errors?.['required']">This field is required</small>
+            <div class="invalid-feedback" *ngIf="fc['speciality'].errors?.['serverError']">{{ fc['speciality'].errors?.['serverError'] }}</div>
+          </div>
+
+          <div class="col-md-2">
+            <label class="form-label">{{ "level" | translate}} <span class="text-danger">*</span></label>
+            <ng-select
+              [items]="levelListFiltered"
+              bindLabel="name"
+              bindValue="id"
+              placeholder="Choose level"
+              formControlName="level"
+              [ngClass]="{'is-invalid': fc['level'].invalid && isSubmitted}"
+              [(ngModel)]="levelListSelect">
+            </ng-select>
+            <small class="invalid-feedback fst-italic" *ngIf="fc['level'].errors?.['required']">This field is required</small>
+            <div class="invalid-feedback fst-italic" *ngIf="fc['level'].errors?.['serverError']">{{ fc['level'].errors?.['serverError'] }}</div>
+          </div>
+
+          <div class="col-md-2">
+            <label class="form-label">{{ "training_type" | translate}}<span class="text-danger">*</span></label>
+            <ng-select
+              [items]="formationList"
+              bindLabel="name"
+              bindValue="id"
+              placeholder="Choose trainingType"
+              formControlName="trainingType"
+              [ngClass]="{'is-invalid': fc['trainingType'].invalid && isSubmitted}"
+              [(ngModel)]="formationListSelect">
+            </ng-select>
+            <small class="invalid-feedback fst-italic" *ngIf="fc['trainingType'].errors?.['required']">This field is required</small>
+            <div class="invalid-feedback fst-italic" *ngIf="fc['trainingType'].errors?.['serverError']">{{ fc['trainingType'].errors?.['serverError'] }}</div>
+          </div>
+
+          <div class="col-md-2">
+            <label class="form-label">{{ "main_room" | translate}}<span class="text-danger">*</span></label>
+            <ng-select
+              [items]="roomList"
+              bindLabel="name"
+              bindValue="id"
+              placeholder="Choose mainRoom"
+              formControlName="mainRoom"
+              [ngClass]="{'is-invalid': fc['mainRoom'].invalid && isSubmitted}"
+              [(ngModel)]="roomListSelect">
+            </ng-select>
+            <small class="invalid-feedback fst-italic" *ngIf="fc['mainRoom'].errors?.['required']">This field is required</small>
+            <div class="invalid-feedback fst-italic" *ngIf="fc['mainRoom'].errors?.['serverError']">{{ fc['mainRoom'].errors?.['serverError'] }}</div>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col-md-3">
+            <mat-radio-group aria-label="Select an option" formControlName="isOptional" [ngClass]="{'is-invalid': fc['isOptional'].invalid && isSubmitted}">
+              <mat-label><b> {{ "optional_class" | translate}}:<span class="text-danger">*</span></b></mat-label>
+              <mat-radio-button value="0">Yes</mat-radio-button>
+              <mat-radio-button value="1">No</mat-radio-button>
+            </mat-radio-group>
+            <div class="invalid-feedback" *ngIf="fc['isOptional'].errors?.['required']">This field is required</div>
+          </div>
+
+          <div class="col-md-2">
+            <label class="form-label">{{ "maximum_student_number" | translate}}</label>
+            <input class="form-control form-control-sm" type="number" placeholder="Ex. A" formControlName="maximumStudentNumber">
+          </div>
+          <div class="col-md-1">
+            <label class="form-label">{{ "age_limit" | translate}}</label>
+            <input class="form-control form-control-sm" type="number" placeholder="Ex. A" formControlName="ageLimit">
+          </div>
+          <div class="col-md-2">
+            <label class="form-label">{{ "simple_hourly_rate" | translate}}</label>
+            <input class="form-control form-control-sm" type="number" placeholder="Ex. A" formControlName="simpleHourlyRate">
+          </div>
+          <div class="col-md-2">
+            <label class="form-label">{{ "multiple_hourly_rate" | translate}}</label>
+            <input class="form-control form-control-sm" type="number" placeholder="Ex. A" formControlName="multipleHourlyRate">
+          </div>
+
+          <div class="col-md-2">
+            <label class="form-label">{{ "registrant_option" | translate}}<span class="text-danger">*</span></label>
+            <ng-select
+              [items]="registrantOptionList"
+              bindLabel="name"
+              bindValue="id"
+              placeholder="Choose registrant Option"
+              formControlName="registrantOption"
+              [ngClass]="{'is-invalid': fc['registrantOption'].invalid && isSubmitted}"
+              [(ngModel)]="registrantOptionListSelect">
+
+            </ng-select>
+          </div>
+        </div>
+
+          <div class="row">
+            <div class="col-md-12">
+          <mat-radio-group aria-label="Select an option" formControlName="classExam">
+            <mat-label> <b> {{ "exam_class" | translate}}:</b></mat-label>
+
+            <div class="row">
+              <mat-radio-button value="Classe Intermediaire"><strong>Classe Intermediaire</strong>, pas d'examen</mat-radio-button>
+            </div>
+            <div class="row">
+              <mat-radio-button value="Classe d'examen Facultative"><strong>Classe d'examen Facultative</strong>, les evaluations de classe permettent le passage en classe superieure</mat-radio-button>
+            </div>
+            <div class="row">
+              <mat-radio-button value="Classe d'examen Obligatoire"><strong>Classe d'examen Obligatoire</strong>,le succes a l'examen est obligatoire pour passer en classe superieure</mat-radio-button>
+            </div>
+          </mat-radio-group>
+        </div>
+      </div>
+      </div>
+    </form>
+
+  </ng-container>
+
+  <button footer form="ngForm" (submit)="onFormSubmit()" type="submit" class="btn btn-sm btn-primary" [disabled]=saving>
+    <ng-container *ngIf="!saving; else isSaving">{{data ? edit : create}}</ng-container>
+    <ng-template #isSaving>
+      {{ "Submitting" | translate}} ...
+    </ng-template>
+  </button>
+</app-modal>
+
+
+
+
+
+
+
+

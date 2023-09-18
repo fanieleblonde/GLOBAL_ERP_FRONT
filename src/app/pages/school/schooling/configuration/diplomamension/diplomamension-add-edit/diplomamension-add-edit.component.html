@@ -1,0 +1,83 @@
+
+<app-modal>
+  <ng-container header>{{ "diploma mension" | translate}}</ng-container>
+
+  <ng-container body>
+    <form [formGroup]="diplomamensionForm" (ngSubmit)="onFormSubmit()" id="ngForm">
+      <div mat-dialog-content>
+
+        <div class="row">
+          <div class="col-md-12">
+            <label class="form-label">{{ "year" | translate}} </label>
+            <ng-select
+              [items]="yearList"
+              bindLabel="year"
+              bindValue="id"
+              placeholder="Choose manager type"
+              formControlName="year"
+              [(ngModel)]="yearSelected">
+            </ng-select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <label class="form-label">{{ "Diploma" | translate}} </label>
+            <ng-select
+              [items]="diplomaList"
+              bindLabel="name"
+              bindValue="id"
+              placeholder="Choose diploma"
+              formControlName="diploma"
+              [(ngModel)]="diplomaSelected">
+            </ng-select>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">{{ "mention" | translate}} </label>
+            <input class="form-control form-control-sm" type="text" placeholder="Ex. A" formControlName="mention" [ngClass]="{'is-invalid': fc['mention'].invalid && isSubmitted}">
+            {{ fc['mention'].errors?.['serverError'] }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <label class="form-label">{{ "Minimum Average / 20" | translate}} </label>
+            <input class="form-control form-control-sm" type="number" placeholder="Ex. A" formControlName="minaverage" [ngClass]="{'is-invalid': fc['minaverage'].invalid && isSubmitted}">
+            {{ fc['minaverage'].errors?.['serverError'] }}
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">{{ "Maximum Average / 20" | translate}} </label>
+            <input class="form-control form-control-sm" type="number" placeholder="Ex. A" formControlName="maxaverage" [ngClass]="{'is-invalid': fc['maxaverage'].invalid && isSubmitted}">
+            {{ fc['maxaverage'].errors?.['serverError'] }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6" style="font-size: 12px;">
+            <mat-radio-group aria-label="Select an option" type="boolean" formControlName="status"  [ngClass]="{'is-invalid': fc['status'].invalid && isSubmitted}">
+              <mat-label><b>Status</b></mat-label>
+              <mat-radio-button value="true">Success</mat-radio-button>
+              <mat-radio-button value="false">Failure</mat-radio-button>
+            </mat-radio-group>
+            <!-- <div class="invalid-feedback" *ngIf="fc['status'].errors?.['required']">This field is required</div> -->
+            </div>
+        </div>
+      </div>
+    </form>
+
+  </ng-container>
+
+  <button footer form="ngForm" (submit)="onFormSubmit()" type="submit" class="btn btn-sm btn-primary" [disabled]=saving>
+    <ng-container *ngIf="!saving; else isSaving">{{data ? edit : create}}</ng-container>
+    <ng-template #isSaving>
+      {{ "Submitting" | translate}} ...
+    </ng-template>
+  </button>
+
+
+</app-modal>
+
+
+
+
+
+
+
+
